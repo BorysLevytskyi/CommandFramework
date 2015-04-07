@@ -179,7 +179,7 @@ namespace CommandFramework
 		private void DefaultErrorHandler(Exception ex)
 		{
 			ConsoleEx.Write(ConsoleColor.Red, "Exception Occurred:");
-			ConsoleEx.WriteLine(ConsoleColor.Red, ex.ToString());
+			ConsoleEx.WriteLine(ConsoleColor.Red, ex.Message);
 			Console.WriteLine();
 		}
 	}

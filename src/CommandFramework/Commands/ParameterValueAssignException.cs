@@ -29,7 +29,13 @@ namespace CommandFramework.Commands
 		public static string BuildMessage(IParameter parameter, IParameterInput input, Exception innerException)
 		{
 			var sb = new StringBuilder();
-			sb.AppendFormat("Failed to set value for parameter {0}. Input value was: {1}", parameter.Name);
+			sb.AppendFormat("Failed to set value for a parameter.");
+			sb.AppendLine();
+
+			sb.AppendFormat("Parameter: {0}", parameter.Name);
+			sb.AppendLine();
+
+			sb.AppendFormat("Input Value: {0}", input.Value);
 
 			if (innerException != null)
 			{

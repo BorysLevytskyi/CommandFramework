@@ -1,11 +1,9 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using CommandFramework;
 using CommandFramework.Catalog;
-using CommandFramework.Commands.Annotation;
-using CommandFramework.Commands.Catalog;
+using CommandFramework.Annotation;
 using CommandFramework.Utils;
 
 namespace ToDoApp
@@ -29,7 +27,6 @@ namespace ToDoApp
 			catalog.AddCommandsFrom<Debugging>();
 
 			var dipstacher = new CommandDispatcher(catalog);
-
 
 			dipstacher.DispatchCommand("task \"check example app\" -c -t CommandFramework -t Example");
 
