@@ -9,8 +9,8 @@ namespace ToDoApp
 		{
 			var manager = new TaskManager();
 			var catalog = new CommandsCatalog();
-			catalog.AddCommandsFrom(manager);
 
+			catalog.AddCommandsFrom(manager);
 			catalog.AddHelpCommand().WithGroup("todo");
 			catalog.AddExitCommand().WithGroup("todo");
 

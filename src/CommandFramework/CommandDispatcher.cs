@@ -118,7 +118,7 @@ namespace CommandFramework
 			
 			if ((cmd = _commandsCatalog.FindByName(commandInput.Name)) == null && DefaultCommand == null)
 			{
-				Console.WriteLine("'{0}' command wasn't found", commandInput.Name);
+				Console.WriteLine("'{0}' command not found", commandInput.Name);
 				return;
 			}
 

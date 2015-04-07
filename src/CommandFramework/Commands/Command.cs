@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using CommandFramework.Annotation;
 using CommandFramework.Commands.Input;
