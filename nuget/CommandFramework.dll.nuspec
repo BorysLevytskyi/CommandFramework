@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>CommandFramework</id>
+    <version>1.0.0-alpha</version>
+    <authors>Boris Levytskyi</authors>
+    <owners>Boris Leveytskyi</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Allows to create rich command line interface.</description>
+    <releaseNotes>Initial creation of the package.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>cli commandline parser arguments commands</tags>
+  </metadata>
+</package>
