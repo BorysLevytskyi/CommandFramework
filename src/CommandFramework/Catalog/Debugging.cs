@@ -16,7 +16,7 @@ namespace CommandFramework.Catalog
 		}
 
 		[Command(Description = "Exits application and launches build command")]
-		public void Build()
+		public static void Build()
 		{
 			string buildFilePath = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + @"..\..\..\build.bat");
 			Process.Start(buildFilePath);
