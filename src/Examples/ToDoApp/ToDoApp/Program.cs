@@ -13,24 +13,18 @@ namespace ToDoApp
 		private static void Main(string[] args)
 		{
 			var manager = new TaskManager();
-			Run(manager);
-		}
-
-		private static void Run(TaskManager manager)
-		{
 			var catalog = new CommandsCatalog();
 			catalog.AddCommandsFrom(manager);
 
 			catalog.AddHelpCommand().WithGroup("todo");
 			catalog.AddExitCommand().WithGroup("todo");
 
-			catalog.AddCommandsFrom<Debugging>();
+			var dispatcher = new CommandDispatcher(catalog);
+			catalog.AddCommandsFrom(new Debugging(dispatcher));
 
-			var dipstacher = new CommandDispatcher(catalog);
+			dispatcher.DispatchCommand("\"check example app\" -c -t CommandFramework -t Example");
 
-			dipstacher.DispatchCommand("task \"check example app\" -c -t CommandFramework -t Example");
-
-			dipstacher.StartDispatchingFromUserInput();
+			dispatcher.StartDispatchingFromUserInput();
 		}
 	}
 
@@ -45,19 +39,29 @@ namespace ToDoApp
 			if (!_tasks.Any())
 			{
 				Console.WriteLine("No tasks");
+				return;
 			}
 
+			Console.WriteLine("Tasks");
+
+			int n = 1;
 			foreach (var task in _tasks)
 			{
+				if (completed && !task.Completed)
+				{
+					continue;
+				}
+
 				var color = task.Completed ? ConsoleColor.Green : ConsoleColor.Gray;
 
+				ConsoleEx.Write(color, "{0}. ", n++);
 				ConsoleEx.Write(color, task.Completed ? "[x]" : "[ ]");
 				ConsoleEx.Write(color, " {0}", task.Title);
 				ConsoleEx.WriteLine(color, " {0}", string.Join(" ", task.Tags.Select(t => string.Format("[{0}]", t))));
 			}
 		}
 
-		[Command(Name = "task")]
+		[Command(Name = "task", IsDefault = true)]
 		public void CreateTask(
 			[Parameter] string title,
 			[Parameter(Synonyms = "c")] bool completed = false,
@@ -73,18 +77,26 @@ namespace ToDoApp
 			_tasks.Add(task);
 
 			Console.WriteLine("Task created");
+			Console.WriteLine();
+
+			ListTasks();
+		}
+
+		[Command]
+		public void Done(int taskNum = 1)
+		{
+			if (taskNum < 1 || taskNum > _tasks.Count)
+			{
+				ConsoleEx.WriteLine(ConsoleColor.Red, "No task with number: {0}", taskNum);
+			}
+
+			var task = _tasks[taskNum-1];
+			task.Completed = true;
+
+			ConsoleEx.WriteLine(ConsoleColor.Green, "Completed: {0}", task.Title);
+			Console.WriteLine();
 
 			ListTasks();
 		}
 	}
-
-	public class Task
-	{
-		public string Title { get; set; }
-
-		public bool Completed { get; set; }
-
-		public List<string> Tags { get; set; }
-	}
-
 }
