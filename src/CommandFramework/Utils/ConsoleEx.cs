@@ -1,4 +1,5 @@
 using System;
+using CommandFramework.CodeAnnotations;
 
 namespace CommandFramework.Utils
 {

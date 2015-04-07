@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Annotations.cs" />
+    <Compile Include="CodeAnnotations\Annotations.cs" />
     <Compile Include="CommandDescribeExtensions.cs" />
     <Compile Include="Annotation\CommandDescriptor.cs" />
     <Compile Include="Annotation\CommandGroupAttribute.cs" />
