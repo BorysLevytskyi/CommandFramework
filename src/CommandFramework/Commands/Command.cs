@@ -14,6 +14,7 @@ namespace CommandFramework.Commands
 			Name = descriptor.Name;
 			Description = descriptor.Description;
 			IsDefault = descriptor.IsDefault;
+			Group = descriptor.GroupName;
 		}
 
 		protected Command(string name)
