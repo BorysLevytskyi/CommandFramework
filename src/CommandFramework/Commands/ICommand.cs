@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CommandFramework.Commands.Input;
 
 namespace CommandFramework.Commands
 {

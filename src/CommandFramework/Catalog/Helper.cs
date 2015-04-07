@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using CommandFramework.Commands.Annotation;
+using CommandFramework.Annotation;
 using CommandFramework.Utils;
 
-namespace CommandFramework.Commands.Catalog
+namespace CommandFramework.Catalog
 {
 	public class Helper
 	{

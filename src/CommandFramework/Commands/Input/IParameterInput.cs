@@ -1,4 +1,4 @@
-﻿namespace CommandFramework.Commands
+﻿namespace CommandFramework.Commands.Input
 {
 	public interface IParameterInput
 	{

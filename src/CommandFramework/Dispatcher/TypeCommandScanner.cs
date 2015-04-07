@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using CommandFramework.Annotation;
 using CommandFramework.Commands;
-using CommandFramework.Commands.Annotation;
 using CommandFramework.Commands.Method;
 
 namespace CommandFramework.Dispatcher

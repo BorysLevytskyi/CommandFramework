@@ -1,6 +1,6 @@
 using System;
 
-namespace CommandFramework.Commands.Annotation
+namespace CommandFramework.Annotation
 {
 	[AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
 	public class CommandAttribute : Attribute

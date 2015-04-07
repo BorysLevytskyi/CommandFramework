@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace CommandFramework.Commands.Annotation
+namespace CommandFramework.Annotation
 {
 	public abstract class CommandDescriptor
 	{

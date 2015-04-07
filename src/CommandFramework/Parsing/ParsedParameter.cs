@@ -1,4 +1,5 @@
 ﻿using CommandFramework.Commands;
+using CommandFramework.Commands.Input;
 
 namespace CommandFramework.Parsing
 {

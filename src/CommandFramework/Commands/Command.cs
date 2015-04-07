@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using CommandFramework.Commands.Annotation;
+using CommandFramework.Annotation;
+using CommandFramework.Commands.Input;
 
 namespace CommandFramework.Commands
 {

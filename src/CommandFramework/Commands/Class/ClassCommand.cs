@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using CommandFramework.Commands.Input;
 using CommandFramework.Parsing;
 
 namespace CommandFramework.Commands.Class

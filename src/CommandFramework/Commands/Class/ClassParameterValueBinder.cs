@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CommandFramework.Commands.Input;
 using CommandFramework.Commands.ParameterBinding;
 
 namespace CommandFramework.Commands.Class

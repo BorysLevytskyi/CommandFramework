@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using CommandFramework.Annotation;
 
-using CommandFramework.Commands.Annotation;
-
-namespace CommandFramework.Commands.Catalog
+namespace CommandFramework.Catalog
 {
 	[CommandGroup("debug")]
 	public class Debugging

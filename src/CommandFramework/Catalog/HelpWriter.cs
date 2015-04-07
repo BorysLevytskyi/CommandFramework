@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CommandFramework.Commands;
 using CommandFramework.Utils;
 
-namespace CommandFramework.Commands.Catalog
+namespace CommandFramework.Catalog
 {
 	internal static class HelpWriter
 	{

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Reflection;
-using CommandFramework.Commands.Annotation;
+using CommandFramework.Annotation;
 using CommandFramework.Reflection;
 
 namespace CommandFramework.Commands

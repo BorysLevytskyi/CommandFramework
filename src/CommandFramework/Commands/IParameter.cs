@@ -1,4 +1,5 @@
 using System;
+using CommandFramework.Commands.Input;
 
 namespace CommandFramework.Commands
 {

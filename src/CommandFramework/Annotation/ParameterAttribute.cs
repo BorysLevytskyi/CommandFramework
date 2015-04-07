@@ -1,6 +1,7 @@
 ﻿using System;
+using CommandFramework.Commands;
 
-namespace CommandFramework.Commands.Annotation
+namespace CommandFramework.Annotation
 {
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Parameter)]
 	public class ParameterAttribute : Attribute

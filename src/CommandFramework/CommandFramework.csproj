@@ -42,12 +42,11 @@
   <ItemGroup>
     <Compile Include="Annotations.cs" />
     <Compile Include="CommandDescribeExtensions.cs" />
-    <Compile Include="Commands\Annotation\CommandDescriptor.cs" />
-    <Compile Include="Commands\Annotation\CommandGroupAttribute.cs" />
-    <Compile Include="Commands\Annotation\ParameterAttribute.cs" />
-    <Compile Include="Commands\Catalog\ClearConsoleCommand.cs" />
-    <Compile Include="Commands\Catalog\Debugging.cs" />
-    <Compile Include="Commands\Catalog\Helper.cs" />
+    <Compile Include="Annotation\CommandDescriptor.cs" />
+    <Compile Include="Annotation\CommandGroupAttribute.cs" />
+    <Compile Include="Annotation\ParameterAttribute.cs" />
+    <Compile Include="Catalog\Debugging.cs" />
+    <Compile Include="Catalog\Helper.cs" />
     <Compile Include="Commands\Class\ClassCommandDescriptor.cs" />
     <Compile Include="Commands\Class\ClassCommandFactory.cs" />
     <Compile Include="Commands\Class\ClassParameterValueBinder.cs" />
@@ -56,7 +55,7 @@
     <Compile Include="Commands\Method\MethodCommandDescriptor.cs" />
     <Compile Include="Commands\ParameterBinding\CollectionParameterValueSlot.cs" />
     <Compile Include="Commands\Command.cs" />
-    <Compile Include="Commands\Annotation\CommandAttribute.cs" />
+    <Compile Include="Annotation\CommandAttribute.cs" />
     <Compile Include="Commands\CommandParameter.cs" />
     <Compile Include="Commands\CommandParameterDescriptor.cs" />
     <Compile Include="Commands\CommandSearchExtensions.cs" />
@@ -73,7 +72,7 @@
     <Compile Include="CommandsCatalog.cs" />
     <Compile Include="Commands\ParameterBinding\ParameterValuesList.cs" />
     <Compile Include="Commands\ParameterBinding\SingleValueParameterValueSlot.cs" />
-    <Compile Include="Commands\Catalog\HelpWriter.cs" />
+    <Compile Include="Catalog\HelpWriter.cs" />
     <Compile Include="Commands\Input\IParameterInput.cs" />
     <Compile Include="Reflection\CollectionConstructor.cs" />
     <Compile Include="Utils\ConsoleEx.cs" />
