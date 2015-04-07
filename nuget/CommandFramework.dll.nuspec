@@ -2,12 +2,14 @@
 <package >
   <metadata>
     <id>CommandFramework</id>
-    <version>1.0.0-alpha</version>
+		<title>CommandFramework</title>
+    <version>1.0.0-alpha-2</version>
     <authors>Boris Levytskyi</authors>
     <owners>Boris Leveytskyi</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/BorysLevytskyi/CommandFramework</projectUrl>
+    <licenseUrl>https://github.com/BorysLevytskyi/CommandFramework/blob/master/LICENSE</licenseUrl>
     <description>Allows to create rich command line interface.</description>
-    <releaseNotes>Initial creation of the package.</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>cli commandline parser arguments commands</tags>
   </metadata>
