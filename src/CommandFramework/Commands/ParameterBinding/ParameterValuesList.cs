@@ -18,11 +18,19 @@ namespace CommandFramework.Commands.ParameterBinding
 			_defaultCollectionParameter = _parameters.SingleOrDefault(p => p.IsCollection && p.PositionIndex == 0);
 		}
 
-		public void SetParameterValue(IParameterInput parameter)
+		public void SetParameterValue(IParameterInput parameterInput)
 		{
-			var slot = EnsureSlot(FindParameter(parameter));
-			slot.SetValue(InputValueConverter.Convert(parameter.Value, slot.Parameter.ValueType));
+			var parameter = FindParameter(parameterInput);
+			var slot = EnsureSlot(parameter);
 
+			try
+			{
+				slot.SetValue(InputValueConverter.Convert(parameterInput.Value, slot.Parameter.ValueType));
+			}
+			catch (Exception ex)
+			{
+				throw new ParameterValueAssignException(parameter, parameterInput, ex);
+			}
 		}
 
 		private TParameter FindParameter(IParameterInput parameter)

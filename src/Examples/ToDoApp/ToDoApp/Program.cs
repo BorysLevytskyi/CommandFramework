@@ -29,7 +29,6 @@ namespace ToDoApp
 
 			var dipstacher = new CommandDispatcher(catalog);
 
-			
 
 			dipstacher.DispatchCommand("task \"check example app\" -c -t CommandFramework -t Example");
 
