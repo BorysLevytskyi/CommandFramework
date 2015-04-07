@@ -94,7 +94,7 @@ namespace CommandFramework
 			_commands.AddRange(TypeCommandScanner.FindCommandsInInstance(inst));
 		}
 
-		public void AddCommandsFrom<T>(CommandsCatalog catalog) where T : class
+		public void AddCommandsFrom<T>() where T : class
 		{
 			AddCommandsFrom(typeof(T));
 		}

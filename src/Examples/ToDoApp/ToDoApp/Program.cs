@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using CommandFramework;
+using CommandFramework.Catalog;
 using CommandFramework.Commands.Annotation;
 using CommandFramework.Commands.Catalog;
 using CommandFramework.Utils;
