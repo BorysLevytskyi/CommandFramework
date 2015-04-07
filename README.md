@@ -5,8 +5,22 @@ Command Line Interface library
 https://www.nuget.org/packages/CommandFramework/1.0.0-alpha
 
 ### How it works
+Most simple
+```C#
+[CommandGroup("royal"]
+public class KingInTheCastle
+{
+	[Command("Great success")] // This is a description
+	public void Do(string this) 
+	{
+	}
+}
 
-To be done. Little example from ToDoApp so far:
+var king = new KingInTheCastle()
+catalog.AddCommandsFrom(king);
+```
+
+Little example from ToDoApp:
 ````c#
 // In TaskManager.cs
 
