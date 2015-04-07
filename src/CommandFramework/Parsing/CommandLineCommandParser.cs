@@ -35,10 +35,8 @@ namespace CommandFramework.Parsing
 					{
 						args.Add(new ParsedParameter(counter++, argName, null));
 					}
-					else
-					{
-						argName = part.TrimStart('-');
-					}
+
+					argName = part.TrimStart('-');
 					continue;
 				}
 
