@@ -10,12 +10,20 @@ namespace CommandFramework.Catalog
 	{
 		internal static void WriteCommands(IEnumerable<ICommand> commands)
 		{
+			Console.WriteLine();
+			Console.WriteLine("Supported commands:");
+			Console.WriteLine();
+
 			foreach (var g in commands.OrderBy(c => c.Group).GroupBy(c => c.Group))
 			{
-				Console.Write(" ");
-				ConsoleEx.Write(ConsoleColor.Cyan, g.Key);
-				Console.WriteLine(" commands");
-				WriteCommandsList(g, 2);
+				if (!string.IsNullOrEmpty(g.Key))
+				{
+					Console.WriteLine();
+					ConsoleEx.Write(ConsoleColor.Cyan, g.Key);
+					Console.WriteLine(" commands");
+				}
+
+				WriteCommandsList(g, string.IsNullOrEmpty(g.Key) ? 0 : 2);
 			}
 		}
 
