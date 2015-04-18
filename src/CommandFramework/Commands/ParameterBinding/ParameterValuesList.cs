@@ -33,18 +33,18 @@ namespace CommandFramework.Commands.ParameterBinding
 			}
 		}
 
-		private TParameter FindParameter(IParameterInput parameter)
+		private TParameter FindParameter(IParameterInput parameterInput)
 		{
-			if (parameter.Name == null && _defaultCollectionParameter != null)
+			if (parameterInput.Name == null && _defaultCollectionParameter != null)
 			{
 				return _defaultCollectionParameter;
 			}
 
-			var prm = _parameters.SingleOrDefault(s => s.Matches(parameter));
+			var prm = _parameters.SingleOrDefault(s => s.Matches(parameterInput));
 
 			if (prm == null)
 			{
-				throw new InvalidOperationException(string.Format("Parameter wasn't found: {0}", parameter));
+				throw new ParameterNotFoundException(parameterInput, string.Format("Parameter not found: {0}", parameterInput.Name));
 			}
 
 			return prm;

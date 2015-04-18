@@ -74,6 +74,7 @@
     <Compile Include="Commands\ParameterBinding\SingleValueParameterValueSlot.cs" />
     <Compile Include="Catalog\HelpWriter.cs" />
     <Compile Include="Commands\Input\IParameterInput.cs" />
+    <Compile Include="Commands\ParameterNotFoundException.cs" />
     <Compile Include="Commands\ParameterValueAssignException.cs" />
     <Compile Include="Reflection\CollectionConstructor.cs" />
     <Compile Include="Utils\ConsoleEx.cs" />
