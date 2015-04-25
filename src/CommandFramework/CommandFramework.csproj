@@ -53,6 +53,7 @@
     <Compile Include="Commands\Class\ClassCommand.cs" />
     <Compile Include="Commands\Input\ICommandInput.cs" />
     <Compile Include="Commands\Method\MethodCommandDescriptor.cs" />
+    <Compile Include="Commands\Method\MethodCompiler.cs" />
     <Compile Include="Commands\ParameterBinding\CollectionParameterValueSlot.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Annotation\CommandAttribute.cs" />
@@ -90,12 +91,6 @@
     <Compile Include="Dispatcher\TypeCommandScanner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\StringExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Searchr.Engine\Searchr.Engine.csproj">
-      <Project>{DC2A7BF2-68A7-4B02-9147-D2709A9F3C49}</Project>
-      <Name>Searchr.Engine</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

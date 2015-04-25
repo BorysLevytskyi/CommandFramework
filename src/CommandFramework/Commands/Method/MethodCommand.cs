@@ -13,6 +13,7 @@ namespace CommandFramework.Commands.Method
 	public class MethodCommand : Command
 	{
 		protected readonly object Instance;
+		private Action<object, object[]> _invocator;
 
 		public MethodCommand(MethodCommandDescriptor descriptor, MethodInfo method, IEnumerable<MethodParameter> parameters, object instance)
 			: base(descriptor)
@@ -20,6 +21,8 @@ namespace CommandFramework.Commands.Method
 			Instance = instance;
 			Method = method;
 			Parameters = new ReadOnlyCollection<MethodParameter>(parameters.ToArray());
+
+			CompileInvocator();
 		}
 
 		protected IReadOnlyCollection<MethodParameter> Parameters { get; private set; }
@@ -27,6 +30,14 @@ namespace CommandFramework.Commands.Method
 		protected MethodInfo Method { get; private set; }
 
 		public override void Execute(IEnumerable<IParameterInput> inputParameters)
+		{
+			var parameters = BindParametesValues(inputParameters);
+
+			TraceExecution(parameters);
+			ExecuteInternal(parameters);
+		}
+
+		private object[] BindParametesValues(IEnumerable<IParameterInput> inputParameters)
 		{
 			var parameters = new object[Parameters.Count];
 
@@ -57,9 +68,7 @@ namespace CommandFramework.Commands.Method
 					? CollectionConstructor.CreateInstance(defPrm.Type, value)
 					: value;
 			}
-
-			TraceExecution(parameters);
-			ExecuteInternal(parameters);
+			return parameters;
 		}
 
 		public override IReadOnlyCollection<IParameter> GetParameters()
@@ -69,7 +78,7 @@ namespace CommandFramework.Commands.Method
 
 		protected virtual void ExecuteInternal(object[] parameters)
 		{
-			Method.Invoke(Instance, parameters);
+			_invocator(Instance, parameters);
 		}
 
 		private void TraceExecution(object[] parameters)
@@ -83,6 +92,13 @@ namespace CommandFramework.Commands.Method
 			}
 
 			Trace.Unindent();
+		}
+
+		private void CompileInvocator()
+		{
+			this._invocator = Instance == null
+				? MethodCompiler.CompileStaticMethodInvocation(Method)
+				: MethodCompiler.CompileInstanceMethodInvocation(Method);
 		}
 	}
 }

@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{17
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp", "Examples\ToDoApp\ToDoApp\ToDoApp.csproj", "{F3A15FA6-EC53-4715-A86C-896E9BA5E08A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandFramework.Tests", "CommandFramework.Tests\CommandFramework.Tests.csproj", "{9CBA2E43-AE1D-43B4-924B-F70B04EA4F9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{F3A15FA6-EC53-4715-A86C-896E9BA5E08A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3A15FA6-EC53-4715-A86C-896E9BA5E08A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3A15FA6-EC53-4715-A86C-896E9BA5E08A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CBA2E43-AE1D-43B4-924B-F70B04EA4F9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CBA2E43-AE1D-43B4-924B-F70B04EA4F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CBA2E43-AE1D-43B4-924B-F70B04EA4F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CBA2E43-AE1D-43B4-924B-F70B04EA4F9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
