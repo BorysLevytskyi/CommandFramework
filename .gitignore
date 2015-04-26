@@ -3,3 +3,4 @@ bin
 *.suo
 nuget/lib
 nuget/nuget.exe
+*.nupkg
