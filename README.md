@@ -42,4 +42,6 @@ void Main()
 	dispatcher.StartDispatchingFromUserInput();
 }
 ````
-Input: `task "this task name" -c -t tag1 -t tag2`
+Create task: `task "this task name" -c -t tag1 -t tag2`
+List completed tasks: 'list -c'
+Display help: 'help'
