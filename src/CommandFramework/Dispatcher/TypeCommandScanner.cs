@@ -48,12 +48,12 @@ namespace CommandFramework.Dispatcher
 
 		private static IEnumerable<ICommand> FindInstanceCommandsInternal(object inst)
 		{
-		    Type type = inst.GetType();
+			Type type = inst.GetType();
 
-		    return (from method in type.GetMethods().Where(m => !m.IsStatic)
-		        let attr = method.GetCustomAttribute<CommandAttribute>()
-		        where attr != null
-		        select MethodCommandFactory.Create(method, inst));
+			return (from method in type.GetMethods().Where(m => !m.IsStatic)
+				let attr = method.GetCustomAttribute<CommandAttribute>()
+				where attr != null
+				select MethodCommandFactory.Create(method, inst));
 		}
 	}
 }

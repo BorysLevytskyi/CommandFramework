@@ -16,6 +16,13 @@ namespace CommandFramework.Tests.MethodCommand
 			staticCommands.Select(c => c.Name).ShouldAllBeEquivalentTo(new [] { "static1", "static2" });
 		}
 
+		[Test]
+		public void ShouldFindInstanceCommands()
+		{
+			var staticCommands = TypeCommandScanner.FindInstanceCommands(new Specimen());
+			staticCommands.Select(c => c.Name).ShouldAllBeEquivalentTo(new[] { "inst1", "inst2" });
+		}
+
 		public class Specimen
 		{
 			[Command]

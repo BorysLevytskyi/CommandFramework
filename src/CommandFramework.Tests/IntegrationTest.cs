@@ -9,27 +9,38 @@ namespace CommandFramework.Tests
 	[TestFixture]
 	public class IntegrationTest
 	{
-		private IntegrationTest inst;
-		private CommandDispatcher dispatcher;
+		private IntegrationTest _inst;
+		private CommandDispatcher _dispatcher;
 
 		[TestFixtureSetUp]
 		public void FixtureSetup()
 		{
-			inst = new IntegrationTest();
+			_inst = new IntegrationTest();
 
 			var catalog = new CommandsCatalog();
 			catalog.AddCommandsFrom<IntegrationTest>();
-			catalog.AddCommandsFrom(inst);
+			catalog.AddCommandsFrom(_inst);
 
-			dispatcher = new CommandDispatcher(catalog);
+			_dispatcher = new CommandDispatcher(catalog);
 		}
 
 		[Test]
-		public void GenericTestCommands()
+		public void TestStaticMethodInvocation()
 		{
-			dispatcher.DispatchCommand("static -intP 10 -stringP test -dateP 2015-01-01 -boolP -colP 2 -colP 3 -colP 4");
+			_dispatcher.DispatchCommand("static -intP 10 -stringP test -dateP 2015-01-01 -boolP -colP 2 -colP 3 -colP 4");
 		}
 
+		[Test]
+		public void TestInstanceMethodInvocation()
+		{
+			_dispatcher.DispatchCommand("inst -intP 10 -stringP test -dateP 2015-01-01 -boolP -colP 2 -colP 3 -colP 4");
+		}
+
+		[Command(Name = "inst")]
+		public void InstanceAssert(int intP, string stringP, DateTime dateP, bool boolP, IEnumerable<int> colP)
+		{
+			StaticAssert(intP, stringP, dateP, boolP, colP);
+		}
 
 		[Command(Name = "static")]
 		public static void StaticAssert(int intP, string stringP, DateTime dateP, bool boolP, IEnumerable<int> colP)
