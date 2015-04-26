@@ -43,5 +43,7 @@ void Main()
 }
 ````
 Create task: `task "this task name" -c -t tag1 -t tag2`
-List completed tasks: 'list -c'
-Display help: 'help'
+
+List completed tasks: `list -c`
+
+Display help: `help`
