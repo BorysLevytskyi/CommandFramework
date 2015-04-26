@@ -96,7 +96,7 @@ namespace CommandFramework.Commands.Method
 
 		private void CompileInvocator()
 		{
-			this._invocator = Instance == null
+			_invocator = Instance == null
 				? MethodCompiler.CompileStaticMethodInvocation(Method)
 				: MethodCompiler.CompileInstanceMethodInvocation(Method);
 		}

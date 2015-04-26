@@ -91,7 +91,7 @@ namespace CommandFramework
 
 		public void AddCommandsFrom(object inst)
 		{
-			_commands.AddRange(TypeCommandScanner.FindCommandsInInstance(inst));
+			_commands.AddRange(TypeCommandScanner.FindInstanceCommands(inst));
 		}
 
 		public void AddCommandsFrom<T>() where T : class
@@ -101,12 +101,12 @@ namespace CommandFramework
 
 		public void AddCommandsFrom(Type type)
 		{
-			_commands.AddRange(TypeCommandScanner.FindCommands(type));
+			_commands.AddRange(TypeCommandScanner.FindStaticCommands(type));
 		}
 
 		public void AddCommandsFrom(Assembly assembly)
 		{
-			_commands.AddRange(TypeCommandScanner.FindCommands(assembly));
+			_commands.AddRange(TypeCommandScanner.FindStaticCommands(assembly));
 		}
 
 		public ICommand GetDefaultCommand()

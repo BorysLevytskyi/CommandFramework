@@ -1,8 +1,9 @@
-﻿using CommandFramework.Commands;
+﻿using System.Diagnostics;
 using CommandFramework.Commands.Input;
 
 namespace CommandFramework.Parsing
 {
+	[DebuggerDisplay("{PositionIndex} {Name} {Value}")]
 	public class ParsedParameter : IParameterInput
 	{
 		private readonly int _positionIndex;

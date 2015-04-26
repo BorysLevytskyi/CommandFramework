@@ -48,8 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IntegrationTest.cs" />
     <Compile Include="MethodCommand\InvocationTests.cs" />
     <Compile Include="MethodCommand\MethodCompiler.cs" />
+    <Compile Include="MethodCommand\TypeCommandScannerTest.cs" />
+    <Compile Include="Parsers\CommandLineCommandParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

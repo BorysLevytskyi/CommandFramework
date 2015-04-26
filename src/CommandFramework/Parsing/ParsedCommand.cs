@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
-using CommandFramework.Commands;
 using CommandFramework.Commands.Input;
 
 namespace CommandFramework.Parsing
 {
+	[DebuggerDisplay("{Name}")]
 	public class ParsedCommand : ICommandInput
 	{
 		public ParsedCommand(string name, IEnumerable<ParsedParameter> arguments)

@@ -10,17 +10,17 @@ namespace CommandFramework.Dispatcher
 {
 	internal static class TypeCommandScanner
 	{
-		public static IEnumerable<ICommand> FindCommandsInInstance(object inst)
+		public static IEnumerable<ICommand> FindInstanceCommands(object inst)
 		{
 			return FindInstanceCommandsInternal(inst).ToList();
 		}
 
-		public static IEnumerable<ICommand> FindCommands(Type type)
+		public static IEnumerable<ICommand> FindStaticCommands(Type type)
 		{
-			return FindCommandsInType(type);
+			return FindCommandsInType(type).ToList();
 		}
 
-		public static IEnumerable<ICommand> FindCommands(Assembly assembly)
+		public static IEnumerable<ICommand> FindStaticCommands(Assembly assembly)
 		{
 			return (from type in assembly.DefinedTypes
 				let attr = type.GetCustomAttribute<CommandGroupAttribute>()
@@ -42,7 +42,7 @@ namespace CommandFramework.Dispatcher
 					continue;
 				}
 
-				yield return MethodCommandFactory.Create(method, attr);
+				yield return MethodCommandFactory.Create(method);
 			}
 		}
 
