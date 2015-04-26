@@ -2,8 +2,8 @@
 <package >
   <metadata>
     <id>CommandFramework</id>
-		<title>CommandFramework</title>
-    <version>1.0.0-alpha-3</version>
+    <title>CommandFramework</title>
+    <version>1.0.0-alpha-4</version>
     <authors>Borys Levytskyi</authors>
     <owners>Borys Levytskyi</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
