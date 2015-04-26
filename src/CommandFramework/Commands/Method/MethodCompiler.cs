@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -11,20 +10,19 @@ namespace CommandFramework.Commands.Method
 	{
 		internal static Action<object, object[]> CompileInstanceMethodInvocation(MethodInfo methodInfo)
 		{
-			var arrArg = Expression.Parameter(typeof(object[]), "args");
+			var arrArg = Expression.Parameter(typeof(object[]));
 			var instanceType = methodInfo.DeclaringType;
-			var instanceArg = Expression.Parameter(typeof(object), "inst");
+			var instanceArg = Expression.Parameter(typeof(object));
 			var arguments = CreateArguments(arrArg, methodInfo.GetParameters().Select(p => p.ParameterType)).ToArray();
 			var body = Expression.Call(Expression.Convert(instanceArg, instanceType), methodInfo, arguments);
 			var lambda = Expression.Lambda<Action<object, object[]>>(body, instanceArg, arrArg);
-			Console.WriteLine(lambda.ToString());
 			return lambda.Compile();
 		}
 
 		internal static Action<object, object[]> CompileStaticMethodInvocation(MethodInfo methodInfo)
 		{
 			var arrArg = Expression.Parameter(typeof (object[]));
-			var instanceArg = Expression.Parameter(typeof(object), "inst");
+			var instanceArg = Expression.Parameter(typeof(object));
 			var arguments = CreateArguments(arrArg, methodInfo.GetParameters().Select(p => p.ParameterType)).ToArray();
 			var body = Expression.Call(methodInfo, arguments);
 			var lambda = Expression.Lambda<Action<object, object[]>>(body, instanceArg, arrArg);
