@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\CommandFramework\CommandFramework.csproj">
+    <ProjectReference Include="..\..\CommandFramework\CommandFramework.csproj">
       <Project>{bea54cc2-8465-416b-b934-aca399e387fd}</Project>
       <Name>CommandFramework</Name>
     </ProjectReference>
