@@ -4,23 +4,11 @@ Command Line Interface library
 ### Nuget Package
 https://www.nuget.org/packages/CommandFramework/
 
+### Documentation
+[https://github.com/BorysLevytskyi/CommandFramework/wiki/Documentation]
+
 ### How it works
-Most simple
-```C#
-[CommandGroup("royal"]
-public class KingInTheCastle
-{
-	[Command("Great success")] // This is a description
-	public void Do(string this) 
-	{
-	}
-}
-
-var king = new KingInTheCastle()
-catalog.AddCommandsFrom(king);
-```
-
-Little example from ToDoApp:
+Little example from ToDoApp example application:
 ````c#
 // In TaskManager.cs
 
@@ -30,7 +18,13 @@ public void CreateTask(
 	[Parameter(Synonyms = "c")] bool completed = false,
 	[Parameter(Synonyms = "t")] IEnumerable<string> tags = null)
 {
-    // Do stuff
+    // Create task
+}
+
+[Command("List created all tasks", Name = "list")]
+public void ListTasks([Parameter(Synonyms = "c")] bool completed = false)
+{
+	// List tasks...
 }
 ````
 
