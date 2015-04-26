@@ -7,18 +7,18 @@ using NUnit.Framework;
 namespace CommandFramework.Tests
 {
 	[TestFixture]
-	public class IntegrationTest
+	public class MethorCommandIntegrationTest
 	{
-		private IntegrationTest _inst;
+		private MethorCommandIntegrationTest _inst;
 		private CommandDispatcher _dispatcher;
 
 		[TestFixtureSetUp]
 		public void FixtureSetup()
 		{
-			_inst = new IntegrationTest();
+			_inst = new MethorCommandIntegrationTest();
 
 			var catalog = new CommandsCatalog();
-			catalog.AddCommandsFrom<IntegrationTest>();
+			catalog.AddCommandsFrom<MethorCommandIntegrationTest>();
 			catalog.AddCommandsFrom(_inst);
 
 			_dispatcher = new CommandDispatcher(catalog);
@@ -36,6 +36,13 @@ namespace CommandFramework.Tests
 			_dispatcher.DispatchCommand("inst -intP 10 -stringP test -dateP 2015-01-01 -boolP -colP 2 -colP 3 -colP 4");
 		}
 
+		[Test]
+		public void TestEmptyParameterCollectionValue()
+		{
+			_dispatcher.DispatchCommand("emptycol");
+			_dispatcher.DispatchCommand("nullcol");
+		}
+
 		[Command(Name = "inst")]
 		public void InstanceAssert(int intP, string stringP, DateTime dateP, bool boolP, IEnumerable<int> colP)
 		{
@@ -49,6 +56,19 @@ namespace CommandFramework.Tests
 			stringP.Should().Be("test");
 			dateP.Should().Be(new DateTime(2015, 1, 1));
 			colP.ShouldAllBeEquivalentTo(new[] { 2, 3, 4});
+		}
+
+		[Command(Name = "emptycol")]
+		public static void EmptyCollectionAssert(int[] items)
+		{
+			items.Should().NotBeNull();
+			items.Should().BeEmpty();
+		}
+
+		[Command(Name = "nullcol")]
+		public static void NullCollectionAssert(int[] items = null)
+		{
+			items.Should().BeNull();
 		}
 	}
 }

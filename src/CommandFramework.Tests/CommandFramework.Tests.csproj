@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IntegrationTest.cs" />
+    <Compile Include="MethorCommandIntegrationTest.cs" />
     <Compile Include="MethodCommand\InvocationTests.cs" />
     <Compile Include="MethodCommand\MethodCompiler.cs" />
     <Compile Include="MethodCommand\TypeCommandScannerTest.cs" />

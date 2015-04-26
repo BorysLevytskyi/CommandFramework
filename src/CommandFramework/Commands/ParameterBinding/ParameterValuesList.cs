@@ -16,6 +16,17 @@ namespace CommandFramework.Commands.ParameterBinding
 			_parameters = parameters;
 			_slots = new Dictionary<TParameter, IParameterValueSlot<TParameter>>();
 			_defaultCollectionParameter = _parameters.SingleOrDefault(p => p.IsCollection && p.PositionIndex == 0);
+
+			// Initialize collection values for non-nullable values
+			EnsureCollectionNoDefaultParametersSlots();
+		}
+
+		private void EnsureCollectionNoDefaultParametersSlots()
+		{
+			foreach (var parameter in _parameters.Where(p => p.IsCollection && !p.AllowsDefaultValue))
+			{
+				EnsureSlot(parameter);
+			}
 		}
 
 		public void SetParameterValue(IParameterInput parameterInput)
