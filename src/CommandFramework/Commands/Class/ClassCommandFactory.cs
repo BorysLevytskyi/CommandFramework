@@ -18,7 +18,7 @@ namespace CommandFramework.Commands.Class
 		{
 			var descriptor = ClassCommandDescriptor<TInstanceCmd>.Build();
 			var parameters = ReadParameters<TInstanceCmd>();
-			var cmd = new ClassCommand<TInstanceCmd>(name ?? descriptor.Name, factory, parameters)
+			var cmd = new ClassCommand<TInstanceCmd>(name ?? descriptor.Name, factory ?? DefaultInstanceFactory<TInstanceCmd>, parameters)
 			{
 				Group = descriptor.GroupName
 			};

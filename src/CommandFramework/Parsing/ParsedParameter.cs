@@ -6,21 +6,22 @@ namespace CommandFramework.Parsing
 	[DebuggerDisplay("{PositionIndex} {Name} {Value}")]
 	public class ParsedParameter : IParameterInput
 	{
-		private readonly int _positionIndex;
-		private readonly string _name;
-		private readonly string _value;
-
-		public ParsedParameter(int positionIndex, string name, string value)
+	    public ParsedParameter(int positionIndex, string name, string value)
 		{
-			_positionIndex = positionIndex;
-			_name = name;
-			_value = value;
+			PositionIndex = positionIndex;
+			Name = name;
+			Value = value;
 		}
 
-		public string Name => _name;
+		public string Name { get; }
 
-	    public string Value => _value;
+	    public string Value { get; }
 
-	    public int PositionIndex => _positionIndex;
+	    public int PositionIndex { get; }
+
+	    public override string ToString()
+	    {
+	        return $"{nameof(Name)}: {Name}, {nameof(Value)}: {Value}, {nameof(PositionIndex)}: {PositionIndex}";
+	    }
 	}
 }

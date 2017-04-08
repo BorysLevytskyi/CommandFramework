@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using CommandFramework.Annotation;
 using CommandFramework.Commands;
+using CommandFramework.Commands.Class;
 using CommandFramework.Commands.Method;
 
 namespace CommandFramework.Dispatcher

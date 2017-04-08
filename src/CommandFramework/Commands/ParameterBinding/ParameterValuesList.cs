@@ -55,7 +55,7 @@ namespace CommandFramework.Commands.ParameterBinding
 
 			if (prm == null)
 			{
-				throw new ParameterNotFoundException(parameterInput, $"Parameter not found: {parameterInput.Name}");
+				throw new ParameterNotFoundException(parameterInput, $"Parameter not found for the following input: {parameterInput}");
 			}
 
 			return prm;

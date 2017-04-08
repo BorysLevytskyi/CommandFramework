@@ -102,10 +102,13 @@ namespace CommandFramework
 			_commands.AddRange(TypeCommandScanner.FindStaticCommands(type));
 		}
 
-		public void AddCommandsFrom(Assembly assembly)
+		public void AddCommandsFrom(params Assembly[] assemblies)
 		{
-			_commands.AddRange(TypeCommandScanner.FindStaticCommands(assembly));
-		}
+		    foreach (var assembly in assemblies)
+		    {
+                _commands.AddRange(TypeCommandScanner.FindStaticCommands(assembly));
+            }
+        }
 
 		public ICommand GetDefaultCommand()
 		{
