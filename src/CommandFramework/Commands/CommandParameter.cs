@@ -37,7 +37,7 @@ namespace CommandFramework.Commands
 
 	    public ICollection<string> Synonyms => _synonyms;
 
-	    public bool IsCollection { get; private set; }
+	    public bool IsCollection { get; }
 
 		public bool Matches(IParameterInput parameter)
 		{

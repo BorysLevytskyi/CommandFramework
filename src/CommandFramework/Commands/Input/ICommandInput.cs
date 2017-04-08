@@ -6,21 +6,21 @@ namespace CommandFramework.Commands.Input
 {
 	public interface ICommandInput
 	{
-		string Name { get; }
+		string CommandName { get; }
 
-		IReadOnlyCollection<IParameterInput> ParameterInputs { get; }
+		IReadOnlyCollection<IParameterInput> InputParameters { get; }
 	}
 
-	public static class InputExtensions
+	public static class CommandInputExtensions
 	{
 		public static ICommandInput ToDefaultCommand(this ICommandInput cmdInput, string name)
 		{
-			var parameters = new List<ParsedParameter>(cmdInput.ParameterInputs.Count + 1)
+			var parameters = new List<ParsedParameter>(cmdInput.InputParameters.Count + 1)
 			{
-				new ParsedParameter(0, null, cmdInput.Name)
+				new ParsedParameter(0, null, cmdInput.CommandName)
 			};
 
-			parameters.AddRange(cmdInput.ParameterInputs.Select(p => new ParsedParameter(p.PositionIndex + 1, p.Name, p.Value)));
+			parameters.AddRange(cmdInput.InputParameters.Select(p => new ParsedParameter(p.PositionIndex + 1, p.Name, p.Value)));
 			return new ParsedCommand(name, parameters);
 		}
 	}

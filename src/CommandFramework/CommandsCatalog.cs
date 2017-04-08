@@ -7,6 +7,7 @@ using CommandFramework.Catalog;
 using CommandFramework.Commands;
 using CommandFramework.Commands.Class;
 using CommandFramework.Commands.Method;
+using CommandFramework.Container;
 using CommandFramework.Dispatcher;
 using CommandFramework.Utils;
 
@@ -36,7 +37,7 @@ namespace CommandFramework
 			return AddCommand(MethodCommandFactory.Create(action.Method, action.Target));
 		}
 
-		public ICommand AddCommand<TInstanceCmd>(Func<TInstanceCmd> factory = null) where TInstanceCmd : ICommandInstance
+		public ICommand AddCommand<TInstanceCmd>(Func<ICommandContext, TInstanceCmd> factory = null) where TInstanceCmd : ICommandInstance
 		{
 			return AddCommand(ClassCommandFactory.Create(factory));
 		}

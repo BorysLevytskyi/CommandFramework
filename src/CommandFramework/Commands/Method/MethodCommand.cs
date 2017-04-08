@@ -25,13 +25,13 @@ namespace CommandFramework.Commands.Method
 			CompileInvocator();
 		}
 
-		protected IReadOnlyCollection<MethodParameter> Parameters { get; private set; }
+		protected IReadOnlyCollection<MethodParameter> Parameters { get; }
 
-		protected MethodInfo Method { get; private set; }
+		protected MethodInfo Method { get; }
 
-		public override void Execute(IEnumerable<IParameterInput> inputParameters)
+		public override void Execute(ICommandContext context)
 		{
-			var parameters = BindParametesValues(inputParameters);
+			var parameters = BindParametesValues(context.CommandInput.InputParameters);
 
 			TraceExecution(parameters);
 			ExecuteInternal(parameters);

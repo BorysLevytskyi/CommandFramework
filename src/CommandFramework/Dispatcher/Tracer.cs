@@ -11,9 +11,9 @@ namespace CommandFramework.Dispatcher
 
 	    public static void WriteCommandExecution(ICommandInput cmd)
 		{
-			Console.WriteLine("Executing command: {0}", cmd.Name);
+			Console.WriteLine("Executing command: {0}", cmd.CommandName);
 
-			foreach (var arg in cmd.ParameterInputs)
+			foreach (var arg in cmd.InputParameters)
 			{
 				Trace.Indent();
 				Trace.WriteLine($"#{arg.PositionIndex} {arg.Name ?? "(anonymous)"}: {arg.Value}");

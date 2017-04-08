@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
+using CommandFramework.Commands;
 using CommandFramework.Commands.Input;
 using CommandFramework.Commands.Method;
+using CommandFramework.Parsing;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -14,7 +16,7 @@ namespace CommandFramework.Tests.MethodCommand
 		public void ShouldPreserveException()
 		{
 			var cmd = MethodCommandFactory.Create(Cmd);
-			Action act = () => cmd.Execute(Enumerable.Empty<IParameterInput>());
+			Action act = () => cmd.Execute(new SimpleCommandContext(new ParsedCommand("cmd", Enumerable.Empty<ParsedParameter>())));
 			act.ShouldThrowExactly<ApplicationException>().And.Message.Should().Be("test");
 		}
 

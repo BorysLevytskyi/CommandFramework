@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using CommandFramework.Annotation;
+using CommandFramework.Container;
 
 namespace CommandFramework.Commands.Class
 {
@@ -13,7 +14,7 @@ namespace CommandFramework.Commands.Class
 			return Create(DefaultInstanceFactory<TInstanceCmd>);
 		}
 
-		internal static ClassCommand<TInstanceCmd> Create<TInstanceCmd>(Func<TInstanceCmd> factory, string name = null) where TInstanceCmd : ICommandInstance
+		internal static ClassCommand<TInstanceCmd> Create<TInstanceCmd>(Func<ICommandContext, TInstanceCmd> factory, string name = null) where TInstanceCmd : ICommandInstance
 		{
 			var descriptor = ClassCommandDescriptor<TInstanceCmd>.Build();
 			var parameters = ReadParameters<TInstanceCmd>();
@@ -24,9 +25,9 @@ namespace CommandFramework.Commands.Class
 			return cmd;
 		}
 
-		private static TInstanceCmd DefaultInstanceFactory<TInstanceCmd>() where TInstanceCmd: ICommandInstance
+		private static TInstanceCmd DefaultInstanceFactory<TInstanceCmd>(ICommandContext context) where TInstanceCmd: ICommandInstance
 		{
-			return Activator.CreateInstance<TInstanceCmd>();
+			return context.CreateInstance<TInstanceCmd>();
 		}
 
 		public static IEnumerable<PropertyParameter> ReadParameters<T>()

@@ -6,19 +6,19 @@ using CommandFramework.Commands.Input;
 
 namespace CommandFramework.Parsing
 {
-	[DebuggerDisplay("{Name}")]
+	[DebuggerDisplay("{CommandName}")]
 	public class ParsedCommand : ICommandInput
 	{
 		public ParsedCommand(string name, IEnumerable<ParsedParameter> arguments)
 		{
-			Name = name;
+			CommandName = name;
 			Parameters = new ReadOnlyCollection<ParsedParameter>(arguments.ToList());
 		}
 
-		public string Name { get; private set; }
+		public string CommandName { get; }
 
-		IReadOnlyCollection<IParameterInput> ICommandInput.ParameterInputs => Parameters;
+		IReadOnlyCollection<IParameterInput> ICommandInput.InputParameters => Parameters;
 
-	    public IReadOnlyCollection<ParsedParameter> Parameters { get; private set; }
+	    public IReadOnlyCollection<ParsedParameter> Parameters { get; }
 	}
 }

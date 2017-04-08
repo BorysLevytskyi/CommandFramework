@@ -17,13 +17,17 @@ namespace CommandFramework
 		void DispatchCommand(string input);
 		void DispatchCommand(ICommandInput commandInput);
 		void Stop();
-		void SetUserInputCommandParser(ICommandParser parser);
+		void UseInputCommandParser(ICommandParser parser);
+	    void UseCommandContextFactory(ICommandContextFactory factory);
 	}
 
 	public class CommandDispatcher : ICommandDispatcher
 	{
 		private readonly CommandsCatalog _commandsCatalog;
+
 		private ICommandParser _commandParser;
+
+	    private ICommandContextFactory _commandContextFactory;
 
 		private bool _isRunning;
 
@@ -71,7 +75,8 @@ namespace CommandFramework
 
 		private void Initialize()
 		{
-			SetUserInputCommandParser(new CommandLineCommandParser());
+			UseInputCommandParser(new CommandLineCommandParser());
+            UseCommandContextFactory(new SimpleCommandContextFactory());
 			CommandErrorHandler = DefaultErrorHandler;
 		}
 
@@ -113,9 +118,9 @@ namespace CommandFramework
 		{
 			ICommand cmd;
 			
-			if ((cmd = _commandsCatalog.FindByName(commandInput.Name)) == null && DefaultCommand == null)
+			if ((cmd = _commandsCatalog.FindByName(commandInput.CommandName)) == null && DefaultCommand == null)
 			{
-				Console.WriteLine("'{0}' command not found", commandInput.Name);
+				Console.WriteLine("'{0}' command not found", commandInput.CommandName);
 				return;
 			}
 
@@ -140,10 +145,15 @@ namespace CommandFramework
 			_isRunning = false;
 		}
 
-		public void SetUserInputCommandParser(ICommandParser parser)
+		public void UseInputCommandParser(ICommandParser parser)
 		{
 			_commandParser = parser;
 		}
+
+	    public void UseCommandContextFactory(ICommandContextFactory factory)
+	    {
+	        _commandContextFactory = factory;
+	    }
 
 		private void DispatchCommandWithoutErrorHandling(ICommandInput commandInput, ICommand cmd)
 		{
@@ -153,7 +163,10 @@ namespace CommandFramework
 				Tracer.WriteCommandExecution(commandInput);
 			}
 
-			cmd.Execute(commandInput.ParameterInputs);
+		    using (var context = _commandContextFactory.CreateContext(commandInput))
+		    {
+                cmd.Execute(context);
+            }
 
 			if (EnableTrace)
 			{

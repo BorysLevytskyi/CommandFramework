@@ -50,7 +50,8 @@
     <Compile Include="Commands\Class\ClassCommandDescriptor.cs" />
     <Compile Include="Commands\Class\ClassCommandFactory.cs" />
     <Compile Include="Commands\Class\ClassParameterValueBinder.cs" />
-    <Compile Include="Commands\Class\ClassCommand.cs" />
+    <Compile Include="Commands\ICommandContext.cs" />
+    <Compile Include="Commands\ICommandContextFactory.cs" />
     <Compile Include="Commands\Input\ICommandInput.cs" />
     <Compile Include="Commands\Method\MethodCommandDescriptor.cs" />
     <Compile Include="Commands\Method\MethodCompiler.cs" />
@@ -77,6 +78,9 @@
     <Compile Include="Commands\Input\IParameterInput.cs" />
     <Compile Include="Commands\ParameterNotFoundException.cs" />
     <Compile Include="Commands\ParameterValueAssignException.cs" />
+    <Compile Include="Commands\SimpleCommandContext.cs" />
+    <Compile Include="Commands\SimpleCommandContextFactory.cs" />
+    <Compile Include="Container\ClassCommand.cs" />
     <Compile Include="Reflection\CollectionConstructor.cs" />
     <Compile Include="Utils\ConsoleEx.cs" />
     <Compile Include="CommandDispatcher.cs" />

@@ -50,6 +50,6 @@ namespace CommandFramework.Commands
 
 		public abstract IReadOnlyCollection<IParameter> GetParameters();
 
-		public abstract void Execute(IEnumerable<IParameterInput> inputParameters);
+		public abstract void Execute(ICommandContext context);
 	}
 }
