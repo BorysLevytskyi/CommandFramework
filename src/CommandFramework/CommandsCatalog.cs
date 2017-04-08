@@ -50,7 +50,7 @@ namespace CommandFramework
 		{
 			if (FindByName(command.Name) != null)
 			{
-				throw new Exception(string.Format("Commands with name '{0}' is already added", command));
+				throw new Exception($"Commands with name '{command}' is already added");
 			}
 
 			_commands.Add(command);
@@ -84,12 +84,9 @@ namespace CommandFramework
 			return GetEnumerator();
 		}
 
-		public int Count
-		{
-			get { return _commands.Count; }
-		}
+		public int Count => _commands.Count;
 
-		public void AddCommandsFrom(object inst)
+	    public void AddCommandsFrom(object inst)
 		{
 			_commands.AddRange(TypeCommandScanner.FindInstanceCommands(inst));
 		}

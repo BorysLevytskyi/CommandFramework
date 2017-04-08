@@ -13,10 +13,7 @@ namespace CommandFramework.Commands.ParameterBinding
             _parameter = parameter;
         }
 
-        public TParameter Parameter
-        {
-            get { return _parameter; }
-        }
+        public TParameter Parameter => _parameter;
 
         public void SetValue(object value)
         {
@@ -29,9 +26,6 @@ namespace CommandFramework.Commands.ParameterBinding
             _value = value;
         }
 
-        public object Value
-        {
-            get { return _value; }
-        }
+        public object Value => _value;
     }
 }

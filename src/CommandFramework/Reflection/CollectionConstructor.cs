@@ -11,7 +11,7 @@ namespace CommandFramework.Reflection
 		{
 			if (!IsSupportedCollectionType(requestedType))
 			{
-				throw new InvalidOperationException(string.Format("Given type doesn't support collection assignment: {0}", requestedType));
+				throw new InvalidOperationException($"Given type doesn't support collection assignment: {requestedType}");
 			}
 
 			var cast = enumerable as IEnumerable;
@@ -38,7 +38,7 @@ namespace CommandFramework.Reflection
 		{
 			if (!typeof(IEnumerable).IsAssignableFrom(requestedType))
 			{
-				throw new InvalidOperationException(string.Format("Given type is not enumerable type: {0}", requestedType));
+				throw new InvalidOperationException($"Given type is not enumerable type: {requestedType}");
 			}
 
 			if (requestedType.IsArray)

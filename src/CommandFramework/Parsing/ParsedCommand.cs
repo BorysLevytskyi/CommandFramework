@@ -17,11 +17,8 @@ namespace CommandFramework.Parsing
 
 		public string Name { get; private set; }
 
-		IReadOnlyCollection<IParameterInput> ICommandInput.ParameterInputs
-		{
-			get { return Parameters; }
-		}
+		IReadOnlyCollection<IParameterInput> ICommandInput.ParameterInputs => Parameters;
 
-		public IReadOnlyCollection<ParsedParameter> Parameters { get; private set; }
+	    public IReadOnlyCollection<ParsedParameter> Parameters { get; private set; }
 	}
 }

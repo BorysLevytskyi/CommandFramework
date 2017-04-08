@@ -23,33 +23,21 @@ namespace CommandFramework.Commands
 			IsCollection = description.IsCollection;
 		}
 
-		public string Name
-		{
-			get { return _name; }
-		}
+		public string Name => _name;
 
-		public int PositionIndex
-		{
-			get { return _positionIndex; }
-		}
+	    public int PositionIndex => _positionIndex;
 
-		public string Description { get; set; }
+	    public string Description { get; set; }
 
 		public bool AllowsDefaultValue { get; protected set; }
 
 		public object DefaultValue { get; protected set; }
 
-		public virtual bool SupportsAssignmentByPositionIndex
-		{
-			get { return _positionIndex >= 0; }
-		}
+		public virtual bool SupportsAssignmentByPositionIndex => _positionIndex >= 0;
 
-		public ICollection<string> Synonyms
-		{
-			get { return _synonyms; }
-		}
+	    public ICollection<string> Synonyms => _synonyms;
 
-		public bool IsCollection { get; private set; }
+	    public bool IsCollection { get; private set; }
 
 		public bool Matches(IParameterInput parameter)
 		{
@@ -66,7 +54,7 @@ namespace CommandFramework.Commands
 				}
 
 				throw new NotSupportedException(
-					string.Format("{0} parameter doesn't support position assignment by index", Name));
+				    $"{Name} parameter doesn't support position assignment by index");
 			}
 
 			return Name != null &&

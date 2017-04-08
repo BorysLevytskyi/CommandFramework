@@ -29,7 +29,7 @@ namespace CommandFramework.Commands.Class
 					}
 					else
 					{
-						throw new Exception(string.Format("{0} parameter value wasn't supplied", defPrm.Name));
+						throw new Exception($"{defPrm.Name} parameter value wasn't supplied");
 					}
 				}
 

@@ -31,12 +31,12 @@ namespace CommandFramework.Commands.Class
 
 		private void TraceExecution(ICommandInstance instance)
 		{
-			Trace.WriteLine(string.Format("Executing class command: {0}", Name));
+			Trace.WriteLine($"Executing class command: {Name}");
 			Trace.Indent();
 
 			foreach (var parameter in Parameters)
 			{
-				Trace.WriteLine(string.Format("{0}: {1}", parameter.Name, parameter.Property.GetValue(instance) ?? "<null>"));
+				Trace.WriteLine($"{parameter.Name}: {parameter.Property.GetValue(instance) ?? "<null>"}");
 			}
 
 			Trace.Unindent();

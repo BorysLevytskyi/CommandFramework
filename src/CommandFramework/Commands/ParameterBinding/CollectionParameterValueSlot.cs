@@ -13,19 +13,13 @@ namespace CommandFramework.Commands.ParameterBinding
 			_valuesList = new List<object>();
 		}
 
-		public TParameter Parameter
-		{
-			get { return _parameter; }
-		}
+		public TParameter Parameter => _parameter;
 
-		public void SetValue(object value)
+	    public void SetValue(object value)
 		{
 			_valuesList.Add(value);
 		}
 
-		public object Value
-		{
-			get { return _valuesList; }
-		}
+		public object Value => _valuesList;
 	}
 }

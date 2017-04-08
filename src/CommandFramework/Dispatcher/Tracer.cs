@@ -16,7 +16,7 @@ namespace CommandFramework.Dispatcher
 			foreach (var arg in cmd.ParameterInputs)
 			{
 				Trace.Indent();
-				Trace.WriteLine(string.Format("#{0} {1}: {2}", arg.PositionIndex, arg.Name ?? "(anonymous)", arg.Value));
+				Trace.WriteLine($"#{arg.PositionIndex} {arg.Name ?? "(anonymous)"}: {arg.Value}");
 				Trace.Unindent();
 			}
 		}

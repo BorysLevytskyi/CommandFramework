@@ -16,17 +16,11 @@ namespace CommandFramework.Commands
 			_parameterInput = parameterParameterInput;
 		}
 
-		public IParameter Parameter
-		{
-			get { return _parameter; }
-		}
+		public IParameter Parameter => _parameter;
 
-		public IParameterInput ParameterInput
-		{
-			get { return _parameterInput; }
-		}
+	    public IParameterInput ParameterInput => _parameterInput;
 
-		public static string BuildMessage(IParameter parameter, IParameterInput input, Exception innerException)
+	    public static string BuildMessage(IParameter parameter, IParameterInput input, Exception innerException)
 		{
 			var sb = new StringBuilder();
 			sb.AppendFormat("Failed to set value for a parameter.");

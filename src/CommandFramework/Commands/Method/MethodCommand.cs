@@ -61,7 +61,7 @@ namespace CommandFramework.Commands.Method
 						continue;
 					}
 
-					throw new Exception(string.Format("{0} parameter value wasn't supplied", defPrm.Name));
+					throw new Exception($"{defPrm.Name} parameter value wasn't supplied");
 				}
 
 				parameters[defPrm.PositionIndex] = defPrm.IsCollection
@@ -83,12 +83,12 @@ namespace CommandFramework.Commands.Method
 
 		private void TraceExecution(object[] parameters)
 		{
-			Trace.WriteLine(string.Format("Executing method command: {0}", Method.Name));
+			Trace.WriteLine($"Executing method command: {Method.Name}");
 			Trace.Indent();
 			
 			for (var i = 0; i < Parameters.Count; i++)
 			{
-				Trace.WriteLine(string.Format("{0}: {1}", Parameters.ElementAt(i), parameters[i] ?? "<null>"));
+				Trace.WriteLine($"{Parameters.ElementAt(i)}: {parameters[i] ?? "<null>"}");
 			}
 
 			Trace.Unindent();

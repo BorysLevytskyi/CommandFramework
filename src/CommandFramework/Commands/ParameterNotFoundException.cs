@@ -12,9 +12,6 @@ namespace CommandFramework.Commands
 			_parameterInput = parameterInput;
 		}
 
-		public IParameterInput ParameterInput
-		{
-			get { return _parameterInput; }
-		}
+		public IParameterInput ParameterInput => _parameterInput;
 	}
 }

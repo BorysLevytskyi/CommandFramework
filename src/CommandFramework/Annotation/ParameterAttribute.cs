@@ -16,12 +16,9 @@ namespace CommandFramework.Annotation
 			_name = name;
 		}
 
-		public string Name
-		{
-			get { return _name; }
-		}
+		public string Name => _name;
 
-		public int PositionIndex { get; set; }
+	    public int PositionIndex { get; set; }
 
 		public string Description { get; set; }
 

@@ -66,7 +66,7 @@ namespace CommandFramework.Catalog
 				
 				if (cmd.GetParameters().Count > 0)
 				{
-					ConsoleEx.Write(ConsoleColor.DarkYellow, String.Format(" ({0})", String.Join(", ", cmd.GetParameters().Select(a => a.Name))));
+					ConsoleEx.Write(ConsoleColor.DarkYellow, $" ({String.Join(", ", cmd.GetParameters().Select(a => a.Name))})");
 				}
 
 				Console.WriteLine(pad + " - {0}", cmd.Description);

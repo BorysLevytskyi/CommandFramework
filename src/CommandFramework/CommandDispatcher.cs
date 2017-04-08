@@ -63,12 +63,9 @@ namespace CommandFramework
 			}
 		}
 
-		public CommandsCatalog CommandsCatalog
-		{
-			get { return _commandsCatalog; }
-		}
+		public CommandsCatalog CommandsCatalog => _commandsCatalog;
 
-		public bool DebugMode { get; set; }
+	    public bool DebugMode { get; set; }
 
 		public Action<Exception> CommandErrorHandler { get; set; }
 

@@ -17,19 +17,10 @@ namespace CommandFramework.Parsing
 			_value = value;
 		}
 
-		public string Name
-		{
-			get { return _name; }
-		}
+		public string Name => _name;
 
-		public string Value
-		{
-			get { return _value; }
-		}
+	    public string Value => _value;
 
-		public int PositionIndex
-		{
-			get { return _positionIndex; }
-		}
+	    public int PositionIndex => _positionIndex;
 	}
 }

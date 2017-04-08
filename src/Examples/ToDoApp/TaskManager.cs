@@ -35,7 +35,7 @@ namespace ToDoApp
 				ConsoleEx.Write(color, "{0}. ", n++);
 				ConsoleEx.Write(color, task.Completed ? "[x]" : "[ ]");
 				ConsoleEx.Write(color, " {0}", task.Title);
-				ConsoleEx.WriteLine(color, " {0}", string.Join(" ", task.Tags.Select(t => string.Format("[{0}]", t))));
+				ConsoleEx.WriteLine(color, " {0}", string.Join(" ", task.Tags.Select(t => $"[{t}]")));
 			}
 		}
 

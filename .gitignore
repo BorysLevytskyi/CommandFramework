@@ -4,3 +4,5 @@ bin
 nuget/lib
 nuget/nuget.exe
 *.nupkg
+packages/
+.userprefs

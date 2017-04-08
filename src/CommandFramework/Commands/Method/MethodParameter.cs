@@ -23,19 +23,10 @@ namespace CommandFramework.Commands.Method
             Debug.Assert(!parameter.IsOut);
         }
 
-        public Type Type
-        {
-            get { return _parameter.ParameterType; }
-        }
+        public Type Type => _parameter.ParameterType;
 
-        public override bool SupportsAssignmentByPositionIndex
-        {
-            get { return true; }
-        }
+        public override bool SupportsAssignmentByPositionIndex => true;
 
-        public override Type ValueType
-        {
-            get { return _valueType; }
-        }
+        public override Type ValueType => _valueType;
     }
 }

@@ -19,14 +19,8 @@ namespace CommandFramework.Commands.Class
 				: property.PropertyType;
 		}
 
-		public PropertyInfo Property
-		{
-			get { return _property; }
-		}
+		public PropertyInfo Property => _property;
 
-		public override Type ValueType
-		{
-			get { return _valueType; }
-		}
+	    public override Type ValueType => _valueType;
 	}
 }
