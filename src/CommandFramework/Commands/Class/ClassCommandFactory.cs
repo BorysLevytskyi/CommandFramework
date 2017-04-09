@@ -14,16 +14,27 @@ namespace CommandFramework.Commands.Class
 			return Create(DefaultInstanceFactory<TInstanceCmd>);
 		}
 
-		internal static ClassCommand<TInstanceCmd> Create<TInstanceCmd>(Func<ICommandContext, TInstanceCmd> factory, string name = null) where TInstanceCmd : ICommandInstance
+        private static ClassCommand<TInstanceCmd> CreateInst<TInstanceCmd>() where TInstanceCmd : ICommandInstance
+        {
+            return Create(DefaultInstanceFactory<TInstanceCmd>);
+        }
+
+        internal static ClassCommand<TInstanceCmd> Create<TInstanceCmd>(Func<ICommandContext, TInstanceCmd> factory) where TInstanceCmd : ICommandInstance
 		{
 			var descriptor = ClassCommandDescriptor<TInstanceCmd>.Build();
 			var parameters = ReadParameters<TInstanceCmd>();
-			var cmd = new ClassCommand<TInstanceCmd>(name ?? descriptor.Name, factory ?? DefaultInstanceFactory<TInstanceCmd>, parameters)
+			var cmd = new ClassCommand<TInstanceCmd>(descriptor, factory ?? DefaultInstanceFactory<TInstanceCmd>, parameters)
 			{
 				Group = descriptor.GroupName
 			};
 			return cmd;
 		}
+
+	    internal static ICommand CreateFromType(Type objectType)
+	    {
+	        return (ICommand) typeof(ClassCommandFactory).GetMethod("CreateInst", BindingFlags.NonPublic | BindingFlags.Static)
+                .MakeGenericMethod(objectType).Invoke(null, null);
+	    }
 
 		private static TInstanceCmd DefaultInstanceFactory<TInstanceCmd>(ICommandContext context) where TInstanceCmd: ICommandInstance
 		{

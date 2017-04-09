@@ -11,6 +11,8 @@ namespace CommandFramework.Annotation
 
 		public bool IsDefault { get; set; }
 
+        public string GroupName { get; set; }
+
 		public CommandAttribute()
 		{
 		}

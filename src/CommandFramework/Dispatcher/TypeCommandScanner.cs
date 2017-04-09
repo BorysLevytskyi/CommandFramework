@@ -11,26 +11,35 @@ namespace CommandFramework.Dispatcher
 {
 	internal static class TypeCommandScanner
 	{
-		public static IEnumerable<ICommand> FindInstanceCommands(object inst)
+	    private static readonly Type CommmandInstanceType = typeof(ICommandInstance);
+
+		public static IEnumerable<ICommand> FindMethodCommandsOnInstance(object inst)
 		{
-			return FindInstanceCommandsInternal(inst).ToList();
+			return FindMethodCommandsOnInstanceInternal(inst).ToList();
 		}
 
-		public static IEnumerable<ICommand> FindStaticCommands(Type type)
+		public static IEnumerable<ICommand> FindStaticMethodCommands(Type type)
 		{
-			return FindCommandsInType(type).ToList();
+			return FindStaticMethodCommandsInternal(type).ToList();
 		}
 
-		public static IEnumerable<ICommand> FindStaticCommands(Assembly assembly)
+	    public static IEnumerable<ICommand> FindClassCommands(Assembly assembly)
+	    {
+	        return (from t in assembly.GetTypes()
+	            where !t.IsAbstract && CommmandInstanceType.IsAssignableFrom(t)
+	            select ClassCommandFactory.CreateFromType(t)).ToArray();
+	    }
+
+		public static IEnumerable<ICommand> FindStaticMethodCommands(Assembly assembly)
 		{
 			return (from type in assembly.DefinedTypes
 				let attr = type.GetCustomAttribute<CommandGroupAttribute>()
 				where attr != null
-				from cmd in FindCommandsInType(type)
+				from cmd in FindStaticMethodCommandsInternal(type)
 				select cmd).ToList();
 		}
 
-		private static IEnumerable<ICommand> FindCommandsInType(Type type)
+		private static IEnumerable<ICommand> FindStaticMethodCommandsInternal(Type type)
 		{
 			foreach (MethodInfo method in type.GetMethods(
 				BindingFlags.NonPublic |
@@ -47,7 +56,7 @@ namespace CommandFramework.Dispatcher
 			}
 		}
 
-		private static IEnumerable<ICommand> FindInstanceCommandsInternal(object inst)
+		private static IEnumerable<ICommand> FindMethodCommandsOnInstanceInternal(object inst)
 		{
 			Type type = inst.GetType();
 

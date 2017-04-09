@@ -12,14 +12,14 @@ namespace CommandFramework.Tests.MethodCommand
 		[Test]
 		public void ShouldFindStaticCommands()
 		{
-			var staticCommands = TypeCommandScanner.FindStaticCommands(typeof (Specimen));
+			var staticCommands = TypeCommandScanner.FindStaticMethodCommands(typeof (Specimen));
 			staticCommands.Select(c => c.Name).ShouldAllBeEquivalentTo(new [] { "static1", "static2" });
 		}
 
 		[Test]
 		public void ShouldFindInstanceCommands()
 		{
-			var staticCommands = TypeCommandScanner.FindInstanceCommands(new Specimen());
+			var staticCommands = TypeCommandScanner.FindMethodCommandsOnInstance(new Specimen());
 			staticCommands.Select(c => c.Name).ShouldAllBeEquivalentTo(new[] { "inst1", "inst2" });
 		}
 

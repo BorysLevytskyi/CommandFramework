@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using CommandFramework.Annotation;
 using CommandFramework.Commands;
 using CommandFramework.Commands.Class;
-using CommandFramework.Commands.Input;
 
 namespace CommandFramework.Container
 {
@@ -13,7 +13,7 @@ namespace CommandFramework.Container
     {
         private readonly Func<ICommandContext, TInstanceCmd> _factory;
 
-        internal ClassCommand(string name, Func<ICommandContext, TInstanceCmd> factory, IEnumerable<PropertyParameter> parameters) : base(name)
+        internal ClassCommand(CommandDescriptor descriptor, Func<ICommandContext, TInstanceCmd> factory, IEnumerable<PropertyParameter> parameters) : base(descriptor)
         {
             _factory = factory;
             Parameters = new ReadOnlyCollection<PropertyParameter>(parameters.ToList());

@@ -40,6 +40,11 @@ namespace CommandFramework.Annotation
 				Description = attribute.Description;
 			}
 
+		    if (!string.IsNullOrEmpty(attribute.GroupName))
+		    {
+		        GroupName = attribute.GroupName;
+		    }
+
 			IsDefault = attribute.IsDefault;
 		}
 

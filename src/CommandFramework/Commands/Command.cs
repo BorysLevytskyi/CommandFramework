@@ -16,11 +16,6 @@ namespace CommandFramework.Commands
 			Group = descriptor.GroupName;
 		}
 
-		protected Command(string name)
-		{
-			Name = name;
-		}
-
 		public bool IsDefault { get; set; }
 
 		public string Group { get; set; }

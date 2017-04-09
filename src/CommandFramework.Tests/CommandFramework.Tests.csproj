@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddDispatcherTests.cs" />
+    <Compile Include="ClassCommandFactoryTests.cs" />
+    <Compile Include="CommandScannerTests.cs" />
     <Compile Include="MethorCommandIntegrationTest.cs" />
     <Compile Include="MethodCommand\InvocationTests.cs" />
     <Compile Include="MethodCommand\MethodCompiler.cs" />
@@ -59,6 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommandFramework.Tests.CommandAssembly\CommandFramework.Tests.CommandAssembly.csproj">
+      <Project>{60d2403f-6482-4d43-8acb-fe8dc8af332e}</Project>
+      <Name>CommandFramework.Tests.CommandAssembly</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CommandFramework\CommandFramework.csproj">
       <Project>{bea54cc2-8465-416b-b934-aca399e387fd}</Project>
       <Name>CommandFramework</Name>

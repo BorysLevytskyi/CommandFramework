@@ -12,7 +12,7 @@ namespace CommandFramework.Tests
 		private MethorCommandIntegrationTest _inst;
 		private CommandDispatcher _dispatcher;
 
-		[TestFixtureSetUp]
+		[OneTimeSetUp]
 		public void FixtureSetup()
 		{
 			_inst = new MethorCommandIntegrationTest();
