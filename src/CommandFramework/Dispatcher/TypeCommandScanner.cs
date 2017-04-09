@@ -25,7 +25,7 @@ namespace CommandFramework.Dispatcher
 
 	    public static IEnumerable<ICommand> FindClassCommands(Assembly assembly)
 	    {
-	        return (from t in assembly.GetTypes()
+	        return (from t in assembly.DefinedTypes
 	            where !t.IsAbstract && CommmandInstanceType.IsAssignableFrom(t)
 	            select ClassCommandFactory.CreateFromType(t)).ToArray();
 	    }
@@ -33,13 +33,19 @@ namespace CommandFramework.Dispatcher
 		public static IEnumerable<ICommand> FindStaticMethodCommands(Assembly assembly)
 		{
 			return (from type in assembly.DefinedTypes
+                where IsStatic(type)
 				let attr = type.GetCustomAttribute<CommandGroupAttribute>()
 				where attr != null
 				from cmd in FindStaticMethodCommandsInternal(type)
 				select cmd).ToList();
 		}
 
-		private static IEnumerable<ICommand> FindStaticMethodCommandsInternal(Type type)
+	    public static bool IsStatic(TypeInfo type)
+	    {
+	        return type.IsAbstract && type.IsSealed;
+	    }
+
+	    private static IEnumerable<ICommand> FindStaticMethodCommandsInternal(Type type)
 		{
 			foreach (MethodInfo method in type.GetMethods(
 				BindingFlags.NonPublic |

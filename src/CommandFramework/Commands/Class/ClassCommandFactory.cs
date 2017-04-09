@@ -14,12 +14,9 @@ namespace CommandFramework.Commands.Class
 			return Create(DefaultInstanceFactory<TInstanceCmd>);
 		}
 
-        private static ClassCommand<TInstanceCmd> CreateInst<TInstanceCmd>() where TInstanceCmd : ICommandInstance
-        {
-            return Create(DefaultInstanceFactory<TInstanceCmd>);
-        }
+	    // ReSharper disable once UnusedMember.Local
 
-        internal static ClassCommand<TInstanceCmd> Create<TInstanceCmd>(Func<ICommandContext, TInstanceCmd> factory) where TInstanceCmd : ICommandInstance
+	    internal static ClassCommand<TInstanceCmd> Create<TInstanceCmd>(Func<ICommandContext, TInstanceCmd> factory) where TInstanceCmd : ICommandInstance
 		{
 			var descriptor = ClassCommandDescriptor<TInstanceCmd>.Build();
 			var parameters = ReadParameters<TInstanceCmd>();
@@ -36,12 +33,12 @@ namespace CommandFramework.Commands.Class
                 .MakeGenericMethod(objectType).Invoke(null, null);
 	    }
 
-		private static TInstanceCmd DefaultInstanceFactory<TInstanceCmd>(ICommandContext context) where TInstanceCmd: ICommandInstance
+	    private static TInstanceCmd DefaultInstanceFactory<TInstanceCmd>(ICommandContext context) where TInstanceCmd: ICommandInstance
 		{
 			return context.CreateInstance<TInstanceCmd>();
 		}
 
-		public static IEnumerable<PropertyParameter> ReadParameters<T>()
+	    public static IEnumerable<PropertyParameter> ReadParameters<T>()
 		{
 			return from p in typeof(T).GetProperties(BindingFlags.Instance | BindingFlags.Public)
 				let attr = p.GetCustomAttribute<ParameterAttribute>()
@@ -49,5 +46,12 @@ namespace CommandFramework.Commands.Class
 				select new PropertyParameter(p, CommandParameterDescriptor.CreateFor(p));
 		}
 
+        /// <summary>
+        /// Used in CreateFromType method
+        /// </summary>
+	    private static ClassCommand<TInstanceCmd> CreateInst<TInstanceCmd>() where TInstanceCmd : ICommandInstance
+	    {
+	        return Create(DefaultInstanceFactory<TInstanceCmd>);
+	    }
 	}
 }
