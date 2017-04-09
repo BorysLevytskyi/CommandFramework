@@ -3,7 +3,7 @@
   <metadata>
     <id>CommandFramework</id>
     <title>CommandFramework</title>
-    <version>1.0.0-alpha-4</version>
+    <version>1.0.0-beta-1</version>
     <authors>Borys Levytskyi</authors>
     <owners>Borys Levytskyi</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -13,4 +13,8 @@
     <copyright>Copyright 2015</copyright>
     <tags>cli commandline parser arguments commands</tags>
   </metadata>
+  <files>
+     <file src="..\src\CommandFramework\bin\Release\CommandFramework.dll" target="lib\CommandFramework.dll" />
+     <file src="..\src\CommandFramework\bin\Release\CommandFramework.pdb" target="lib\CommandFramework.pdb" />
+  </files>
 </package>
