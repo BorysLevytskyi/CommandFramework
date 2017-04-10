@@ -5,7 +5,7 @@ using CommandFramework.Reflection;
 
 namespace CommandFramework.Commands
 {
-	public class CommandParameterDescriptor : IParameterDescription
+	internal class CommandParameterDescriptor : IParameterDescription
 	{
 		public CommandParameterDescriptor()
 		{

@@ -4,16 +4,14 @@ namespace CommandFramework.Commands.ParameterBinding
 {
     public class SingleValueParameterValueSlot<TParameter> : IParameterValueSlot<TParameter> where TParameter : IParameter
     {
-        private readonly TParameter _parameter;
-        private object _value = null;
         private bool _valueSet = false;
 
         public SingleValueParameterValueSlot(TParameter parameter)
         {
-            _parameter = parameter;
+            Parameter = parameter;
         }
 
-        public TParameter Parameter => _parameter;
+        public TParameter Parameter { get; }
 
         public void SetValue(object value)
         {
@@ -23,9 +21,9 @@ namespace CommandFramework.Commands.ParameterBinding
             }
 
             _valueSet = true;
-            _value = value;
+            Value = value;
         }
 
-        public object Value => _value;
+        public object Value { get; private set; } = null;
     }
 }

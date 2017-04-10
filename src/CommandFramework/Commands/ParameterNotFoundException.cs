@@ -5,13 +5,11 @@ namespace CommandFramework.Commands
 {
 	public class ParameterNotFoundException : Exception
 	{
-		private readonly IParameterInput _parameterInput;
-
-		public ParameterNotFoundException(IParameterInput parameterInput, string message) : base(message)
+	    public ParameterNotFoundException(IParameterInput parameterInput, string message) : base(message)
 		{
-			_parameterInput = parameterInput;
+			ParameterInput = parameterInput;
 		}
 
-		public IParameterInput ParameterInput => _parameterInput;
+		public IParameterInput ParameterInput { get; }
 	}
 }

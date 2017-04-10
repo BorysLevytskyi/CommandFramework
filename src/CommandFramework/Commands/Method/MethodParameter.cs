@@ -6,17 +6,16 @@ using CommandFramework.Reflection;
 namespace CommandFramework.Commands.Method
 {
     [DebuggerDisplay("{Type.Name} {Name}")]
-    public class MethodParameter : Parameter
+    internal class MethodParameter : Parameter
     {
         private readonly ParameterInfo _parameter;
-        private readonly Type _valueType;
 
         public MethodParameter(ParameterInfo parameter)
             : base(CommandParameterDescriptor.CreateFor(parameter))
         {
             _parameter = parameter;
 
-            _valueType = IsCollection
+            ValueType = IsCollection
                 ? CollectionConstructor.GetElementType(_parameter.ParameterType)
                 : _parameter.ParameterType;
 
@@ -27,6 +26,6 @@ namespace CommandFramework.Commands.Method
 
         public override bool SupportsAssignmentByPositionIndex => true;
 
-        public override Type ValueType => _valueType;
+        public override Type ValueType { get; }
     }
 }

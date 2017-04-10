@@ -4,23 +4,20 @@ using CommandFramework.Reflection;
 
 namespace CommandFramework.Commands.Class
 {
-	public class PropertyParameter : Parameter
+	internal class PropertyParameter : Parameter
 	{
-		private readonly PropertyInfo _property;
-		private readonly Type _valueType;
-
-		public PropertyParameter(PropertyInfo property, CommandParameterDescriptor description) : 
+	    public PropertyParameter(PropertyInfo property, CommandParameterDescriptor description) : 
 			base(description)
 		{
-			_property = property;
+			Property = property;
 
-			_valueType = IsCollection
+			ValueType = IsCollection
 				? CollectionConstructor.GetElementType(property.PropertyType)
 				: property.PropertyType;
 		}
 
-		public PropertyInfo Property => _property;
+		public PropertyInfo Property { get; }
 
-	    public override Type ValueType => _valueType;
+	    public override Type ValueType { get; }
 	}
 }

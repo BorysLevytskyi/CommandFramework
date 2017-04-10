@@ -6,19 +6,16 @@ namespace CommandFramework.Commands
 {
 	public class ParameterValueAssignException : Exception
 	{
-		private readonly IParameter _parameter;
-		private readonly IParameterInput _parameterInput;
-
-		public ParameterValueAssignException(IParameter parameter, IParameterInput parameterParameterInput, Exception innerException) : 
+	    public ParameterValueAssignException(IParameter parameter, IParameterInput parameterParameterInput, Exception innerException) : 
 			base(BuildMessage(parameter, parameterParameterInput, innerException), innerException)
 		{
-			_parameter = parameter;
-			_parameterInput = parameterParameterInput;
+			Parameter = parameter;
+			ParameterInput = parameterParameterInput;
 		}
 
-		public IParameter Parameter => _parameter;
+		public IParameter Parameter { get; }
 
-	    public IParameterInput ParameterInput => _parameterInput;
+	    public IParameterInput ParameterInput { get; }
 
 	    public static string BuildMessage(IParameter parameter, IParameterInput input, Exception innerException)
 		{

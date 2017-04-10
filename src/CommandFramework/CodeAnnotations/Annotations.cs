@@ -317,7 +317,7 @@ namespace CommandFramework.CodeAnnotations
     }
 
     [Flags]
-    public enum ImplicitUseKindFlags
+    internal enum ImplicitUseKindFlags
     {
         Default = Access | Assign | InstantiatedWithFixedConstructorSignature,
         /// <summary>Only entity marked with attribute considered used</summary>
@@ -339,7 +339,7 @@ namespace CommandFramework.CodeAnnotations
     /// or <see cref="UsedImplicitlyAttribute"/>
     /// </summary>
     [Flags]
-    public enum ImplicitUseTargetFlags
+    internal enum ImplicitUseTargetFlags
     {
         Default = Itself,
         Itself = 1,
@@ -396,7 +396,7 @@ namespace CommandFramework.CodeAnnotations
     /// starting from web root (~)
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
-    public class PathReferenceAttribute : Attribute
+    internal class PathReferenceAttribute : Attribute
     {
         public PathReferenceAttribute() { }
         public PathReferenceAttribute([PathReference] string basePath)

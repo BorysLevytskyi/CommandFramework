@@ -4,18 +4,14 @@ using CommandFramework.Commands.Input;
 
 namespace CommandFramework.Commands
 {
-	public abstract class Parameter : IParameter
+	internal abstract class Parameter : IParameter
 	{
-		private readonly string _name;
-		private readonly int _positionIndex;
-		private readonly ICollection<string> _synonyms;
-
-		protected Parameter(IParameterDescription description)
+	    protected Parameter(IParameterDescription description)
 		{
-			_name = description.Name;
-			_positionIndex = description.PositionIndex;
+			Name = description.Name;
+			PositionIndex = description.PositionIndex;
 
-			_synonyms = new HashSet<string>(description.Synonyms, StringComparer.OrdinalIgnoreCase);
+			Synonyms = new HashSet<string>(description.Synonyms, StringComparer.OrdinalIgnoreCase);
 
 			Description = description.Description;
 			AllowsDefaultValue = description.AllowsDefaultValue;
@@ -23,9 +19,9 @@ namespace CommandFramework.Commands
 			IsCollection = description.IsCollection;
 		}
 
-		public string Name => _name;
+		public string Name { get; }
 
-	    public int PositionIndex => _positionIndex;
+	    public int PositionIndex { get; }
 
 	    public string Description { get; set; }
 
@@ -33,9 +29,9 @@ namespace CommandFramework.Commands
 
 		public object DefaultValue { get; protected set; }
 
-		public virtual bool SupportsAssignmentByPositionIndex => _positionIndex >= 0;
+		public virtual bool SupportsAssignmentByPositionIndex => PositionIndex >= 0;
 
-	    public ICollection<string> Synonyms => _synonyms;
+	    public ICollection<string> Synonyms { get; }
 
 	    public bool IsCollection { get; }
 

@@ -61,7 +61,7 @@ namespace CommandFramework
 
 		public ICommand AddHelpCommand()
 		{
-			var helper = new Helper(this);
+			var helper = new HelpCommand(this);
 			return AddCommand<string, string>(helper.DisplayHelp);
 		}
 

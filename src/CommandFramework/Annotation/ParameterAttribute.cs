@@ -13,10 +13,10 @@ namespace CommandFramework.Annotation
 
 		public ParameterAttribute(string name) : this()
 		{
-			_name = name;
+			Name = name;
 		}
 
-		public string Name => _name;
+		public string Name { get; }
 
 	    public int PositionIndex { get; set; }
 
@@ -24,9 +24,7 @@ namespace CommandFramework.Annotation
 
 		public string Synonyms { get; set; }
 
-		private readonly string _name;
-
-		public void SetCreateDescriptorValues(CommandParameterDescriptor descriptor)
+	    internal void SetCreateDescriptorValues(CommandParameterDescriptor descriptor)
 		{
 			if (!string.IsNullOrEmpty(Name))
 			{

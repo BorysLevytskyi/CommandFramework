@@ -2,7 +2,7 @@ using System;
 
 namespace CommandFramework.Commands.Input
 {
-	public static class InputValueConverter
+	internal static class InputValueConverter
 	{
 		public static object Convert(string value, Type type)
 		{

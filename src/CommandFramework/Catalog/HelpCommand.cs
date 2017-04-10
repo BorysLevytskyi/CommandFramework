@@ -5,7 +5,7 @@ using CommandFramework.Utils;
 
 namespace CommandFramework.Catalog
 {
-	public class Helper
+	public class HelpCommand
 	{
 		private readonly CommandsCatalog _catalog;
 
@@ -31,7 +31,7 @@ namespace CommandFramework.Catalog
 				_catalog.Where(c => @group == null || c.Group.Equals(@group, StringComparison.OrdinalIgnoreCase)));
 		}
 
-		public Helper(CommandsCatalog catalog)
+		public HelpCommand(CommandsCatalog catalog)
 		{
 			_catalog = catalog;
 		}

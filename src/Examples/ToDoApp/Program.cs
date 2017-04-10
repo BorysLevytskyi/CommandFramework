@@ -15,7 +15,7 @@ namespace ToDoApp
 			catalog.AddExitCommand().WithGroup("todo");
 
 			var dispatcher = new CommandDispatcher(catalog);
-			catalog.AddCommandsFrom(new Debugging(dispatcher));
+			catalog.AddCommandsFrom(new DebugCommands(dispatcher));
 
 			dispatcher.DispatchCommand("\"check example app\" -c -t CommandFramework -t Example");
 

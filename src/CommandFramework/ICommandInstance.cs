@@ -1,4 +1,4 @@
-namespace CommandFramework.Commands.Class
+namespace CommandFramework
 {
 	public interface ICommandInstance
 	{

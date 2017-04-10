@@ -6,11 +6,11 @@ using CommandFramework.Annotation;
 namespace CommandFramework.Catalog
 {
 	[CommandGroup("debug")]
-	public class Debugging
+	public class DebugCommands
 	{
 		private readonly CommandDispatcher _dispatcher;
 
-		public Debugging(CommandDispatcher dispatcher)
+		public DebugCommands(CommandDispatcher dispatcher)
 		{
 			_dispatcher = dispatcher;
 		}

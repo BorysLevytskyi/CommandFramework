@@ -23,9 +23,7 @@ namespace CommandFramework
 
 	public class CommandDispatcher : ICommandDispatcher
 	{
-		private readonly CommandsCatalog _commandsCatalog;
-
-		private ICommandParser _commandParser;
+	    private ICommandParser _commandParser;
 
 	    private ICommandContextFactory _commandContextFactory;
 
@@ -35,15 +33,21 @@ namespace CommandFramework
 
 		public CommandDispatcher(CommandsCatalog commandsCatalog)
 		{
-			_commandsCatalog = commandsCatalog ?? new CommandsCatalog();
+			CommandsCatalog = commandsCatalog ?? new CommandsCatalog();
 			
 			Initialize();
 
-			DefaultCommand = _commandsCatalog.GetDefaultCommand();
+			DefaultCommand = CommandsCatalog.GetDefaultCommand();
 		}
 
+        /// <summary>
+        /// Gets or sets a default command that will be execute when no other command has matched input
+        /// </summary>
 		public ICommand DefaultCommand { get; set; }
 
+        /// <summary>
+        /// Enables trace console output for command dispatcher
+        /// </summary>
 		public bool EnableTrace
 		{
 			get { return _enableTrace; }
@@ -67,8 +71,12 @@ namespace CommandFramework
 			}
 		}
 
-		public CommandsCatalog CommandsCatalog => _commandsCatalog;
+		public CommandsCatalog CommandsCatalog { get; }
 
+	    /// <summary>
+        /// Gets or sets whether dispacther is in Debug mode. 
+        /// In debug mode all exception thrown by commands are not cought by dispatcher
+        /// </summary>
 	    public bool DebugMode { get; set; }
 
 		public Action<Exception> CommandErrorHandler { get; set; }
@@ -118,7 +126,7 @@ namespace CommandFramework
 		{
 			ICommand cmd;
 			
-			if ((cmd = _commandsCatalog.FindByName(commandInput.CommandName)) == null && DefaultCommand == null)
+			if ((cmd = CommandsCatalog.FindByName(commandInput.CommandName)) == null && DefaultCommand == null)
 			{
 				Console.WriteLine("'{0}' command not found", commandInput.CommandName);
 				return;
