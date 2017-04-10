@@ -10,7 +10,7 @@ using CommandFramework.Reflection;
 
 namespace CommandFramework.Commands.Method
 {
-	public class MethodCommand : Command
+	internal class MethodCommand : Command
 	{
 		protected readonly object Instance;
 		private Action<object, object[]> _invocator;

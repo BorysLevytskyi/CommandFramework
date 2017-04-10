@@ -3,7 +3,7 @@ using CommandFramework.Annotation;
 
 namespace CommandFramework.Commands.Method
 {
-	public class MethodCommandDescriptor : CommandDescriptor
+	internal class MethodCommandDescriptor : CommandDescriptor
 	{
 		internal static MethodCommandDescriptor Build(MethodInfo method)
 		{

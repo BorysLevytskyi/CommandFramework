@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace CommandFramework.Commands.Method
 {
-	public static class MethodCommandFactory
+	internal static class MethodCommandFactory
 	{
 		public static MethodCommand Create(Action @delegate, string name = null)
 		{

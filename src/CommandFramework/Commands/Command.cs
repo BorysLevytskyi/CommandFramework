@@ -6,7 +6,7 @@ using CommandFramework.Commands.Input;
 
 namespace CommandFramework.Commands
 {
-	public abstract class Command : ICommand
+	internal abstract class Command : ICommand
 	{
 		protected Command(CommandDescriptor descriptor)
 		{

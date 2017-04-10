@@ -2,11 +2,14 @@ using System.Reflection;
 
 namespace CommandFramework.Annotation
 {
-	public abstract class CommandDescriptor
+	internal abstract class CommandDescriptor
 	{
 		public string Name { get; set; }
-		public string GroupName { get; set; }
-		public string Description { get; set; }
+
+        public string GroupName { get; set; }
+
+        public string Description { get; set; }
+
 		public bool IsDefault { get; set; }
 
 		protected virtual void ReadAttributes<TSource>(TSource attributeProvider) where TSource : ICustomAttributeProvider
