@@ -167,7 +167,7 @@ namespace CommandFramework
 		{
 			if (EnableTrace)
 			{
-				Trace.Indent();
+				Tracer.Indent();
 				Tracer.WriteCommandExecution(commandInput);
 			}
 
@@ -178,7 +178,7 @@ namespace CommandFramework
 
 			if (EnableTrace)
 			{
-				Trace.Unindent();
+				Tracer.Unindent();
 			}
 		}
 

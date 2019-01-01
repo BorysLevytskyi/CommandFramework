@@ -15,13 +15,6 @@ namespace CommandFramework.Catalog
 			_dispatcher = dispatcher;
 		}
 
-		[Command(Description = "Exits application and launches build command")]
-		public static void Build()
-		{
-			string buildFilePath = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + @"..\..\..\build.bat");
-			Process.Start(buildFilePath);
-			Environment.Exit(0);
-		}
 
 		[Command("Attaches debugger")]
 		public void Debug()

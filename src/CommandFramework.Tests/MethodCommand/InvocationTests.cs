@@ -17,7 +17,7 @@ namespace CommandFramework.Tests.MethodCommand
 		{
 			var cmd = MethodCommandFactory.Create(Cmd);
 			Action act = () => cmd.Execute(new SimpleCommandContext(new ParsedCommand("cmd", Enumerable.Empty<ParsedParameter>())));
-			act.ShouldThrowExactly<ApplicationException>().And.Message.Should().Be("test");
+			act.Should().Throw<ApplicationException>().And.Message.Should().Be("test");
 		}
 
 		public static void Cmd()

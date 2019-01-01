@@ -7,7 +7,7 @@ namespace CommandFramework.Dispatcher
 {
 	internal class Tracer
 	{
-	    private static ConsoleTraceListener _listener;
+	    // private static ConsoleTraceListener _listener;
 
 	    public static void WriteCommandExecution(ICommandInput cmd)
 		{
@@ -15,21 +15,33 @@ namespace CommandFramework.Dispatcher
 
 			foreach (var arg in cmd.InputParameters)
 			{
-				Trace.Indent();
-				Trace.WriteLine($"#{arg.PositionIndex} {arg.Name ?? "(anonymous)"}: {arg.Value}");
-				Trace.Unindent();
+				Tracer.Indent();
+				Tracer.WriteLine($"#{arg.PositionIndex} {arg.Name ?? "(anonymous)"}: {arg.Value}");
+				Tracer.Unindent();
 			}
 		}
 
 		public static void Start()
 		{
-			Debug.Listeners.Add(_listener = new ConsoleTraceListener());
+			//Trace.Listeners.Add(new DefaultTraceListener());
 		}
 
 	    public static void Stop()
 	    {
-	        Debug.Listeners.Remove(_listener);
-	        _listener = null;
+	        //Debug.Listeners.Remove(_listener);
+	        //_listener = null;
+	    }
+
+	    public static void Indent()
+	    {
+	    }
+
+	    public static void Unindent()
+	    {
+	    }
+
+	    public static void WriteLine(string line)
+	    {
 	    }
 	}
 }

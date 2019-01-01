@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace CommandFramework.Reflection
 {
@@ -46,17 +47,17 @@ namespace CommandFramework.Reflection
 				return requestedType.GetElementType();
 			}
 
-			if (!requestedType.IsGenericType)
+			if (!requestedType.IsGenericType())
 			{
 				return typeof (object);
 			}
 
-			return requestedType.GetGenericArguments().First();
+			return requestedType.GenericTypeArguments.First();
 		}
 
 		private static bool IsKnownGenericType(Type requestedType)
 		{
-			if (!requestedType.IsGenericType)
+			if (!requestedType.IsGenericType())
 			{
 				return false;
 			}
@@ -97,4 +98,17 @@ namespace CommandFramework.Reflection
 			typeof (ICollection<>)
 		};
 	}
+
+    internal static class TypeExtensions
+    {
+        internal static bool IsGenericType(this Type type)
+        {
+            return type.GetTypeInfo().IsGenericType;
+        }
+
+        internal static bool IsAssignableFrom(this Type type, Type fromType)
+        {
+            return type.GetTypeInfo().IsAssignableFrom(fromType.GetTypeInfo());
+        }
+    }
 }

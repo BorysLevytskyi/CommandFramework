@@ -13,7 +13,7 @@ namespace CommandFramework.Tests
         public void Should_create_class_command_from_type()
         {
             ClassCommandFactory.CreateFromType(typeof(ClassCommand1))
-                .ShouldBeEquivalentTo<ICommand>(new
+                .Should().BeEquivalentTo(new
                 {
                     Name = "class_command_1",
                     IsDefault = false,
@@ -26,7 +26,7 @@ namespace CommandFramework.Tests
         public void Should_create_class_command_from_generic_type()
         {
             ClassCommandFactory.Create<ClassCommand1>()
-                .ShouldBeEquivalentTo<ICommand>(new
+                .Should().BeEquivalentTo(new
                 {
                     Name = "class_command_1",
                     IsDefault = false,

@@ -8,22 +8,22 @@ namespace CommandFramework.Commands.Method
 	{
 		public static MethodCommand Create(Action @delegate, string name = null)
 		{
-			return Create(@delegate.Method, @delegate.Target, name);
+			return Create(@delegate.GetMethodInfo(), @delegate.Target, name);
 		}
 
 		public static MethodCommand Create<TArg1>(Action<TArg1> @delegate, string name = null)
 		{
-			return Create(@delegate.Method, @delegate.Target, name);
+			return Create(@delegate.GetMethodInfo(), @delegate.Target, name);
 		}
 
 		public static MethodCommand Create<TArg1, TArg2>(Action<TArg1, TArg2> @delegate, string name = null)
 		{
-			return Create(@delegate.Method, @delegate.Target, name);
+			return Create(@delegate.GetMethodInfo(), @delegate.Target, name);
 		}
 
 		public static MethodCommand Create<TArg1, TArg2, TArg3>(Action<TArg1, TArg2, TArg3> @delegate, string name = null)
 		{
-			return Create(@delegate.Method, @delegate.Target, name);
+			return Create(@delegate.GetMethodInfo(), @delegate.Target, name);
 		}
 
 		public static MethodCommand Create(MethodInfo method, object instance = null, string name = null)

@@ -13,7 +13,7 @@ namespace CommandFramework.Tests
         public void Should_find_all_class_commands()
         {
             TypeCommandScanner.FindClassCommands(typeof(ClassCommand1).Assembly)
-                .ShouldAllBeEquivalentTo(
+                .Should().BeEquivalentTo(
                     new object[]
                     {
                         new

@@ -12,7 +12,7 @@ namespace CommandFramework.Annotation
 
 		public bool IsDefault { get; set; }
 
-		protected virtual void ReadAttributes<TSource>(TSource attributeProvider) where TSource : ICustomAttributeProvider
+		protected virtual void ReadAttributes<TSource>(TSource attributeProvider) where TSource : MemberInfo
 		{
 			foreach (var attr in attributeProvider.GetCustomAttributes(true))
 			{

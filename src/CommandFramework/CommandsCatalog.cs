@@ -24,17 +24,17 @@ namespace CommandFramework
 
 		public ICommand AddCommand<T>(Action<T> action)
 		{
-			return AddCommand(MethodCommandFactory.Create(action.Method, action.Target));
+			return AddCommand(MethodCommandFactory.Create(action.GetMethodInfo(), action.Target));
 		}
 
 		public ICommand AddCommand<T1, T2>(Action<T1, T2> action)
 		{
-			return AddCommand(MethodCommandFactory.Create(action.Method, action.Target));
+			return AddCommand(MethodCommandFactory.Create(action.GetMethodInfo(), action.Target));
 		}
 
 		public ICommand AddCommand<T1, T2, T3>(Action<T1, T2, T3> action)
 		{
-			return AddCommand(MethodCommandFactory.Create(action.Method, action.Target));
+			return AddCommand(MethodCommandFactory.Create(action.GetMethodInfo(), action.Target));
 		}
 
 		public ICommand AddCommand<TInstanceCmd>(Func<ICommandContext, TInstanceCmd> factory = null) where TInstanceCmd : ICommandInstance
@@ -44,7 +44,7 @@ namespace CommandFramework
 
 		public ICommand AddCommand(Action action)
 		{
-			return AddCommand(MethodCommandFactory.Create(action.Method, action.Target));
+			return AddCommand(MethodCommandFactory.Create(action.GetMethodInfo(), action.Target));
 		}
 
 		public ICommand AddCommand(ICommand command)

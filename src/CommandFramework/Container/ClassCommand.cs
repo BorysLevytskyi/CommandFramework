@@ -6,6 +6,7 @@ using System.Linq;
 using CommandFramework.Annotation;
 using CommandFramework.Commands;
 using CommandFramework.Commands.Class;
+using CommandFramework.Dispatcher;
 
 namespace CommandFramework.Container
 {
@@ -32,15 +33,15 @@ namespace CommandFramework.Container
 
         private void TraceExecution(ICommandInstance instance)
         {
-            Trace.WriteLine($"Executing class command: {Name}");
-            Trace.Indent();
+            Tracer.WriteLine($"Executing class command: {Name}");
+            Tracer.Indent();
 
             foreach (var parameter in Parameters)
             {
-                Trace.WriteLine($"{parameter.Name}: {parameter.Property.GetValue(instance) ?? "<null>"}");
+                Tracer.WriteLine($"{parameter.Name}: {parameter.Property.GetValue(instance) ?? "<null>"}");
             }
 
-            Trace.Unindent();
+            Tracer.Unindent();
         }
 
         public override IReadOnlyCollection<IParameter> GetParameters()

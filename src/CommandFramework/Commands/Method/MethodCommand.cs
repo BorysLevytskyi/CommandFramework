@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using CommandFramework.Commands.Input;
 using CommandFramework.Commands.ParameterBinding;
+using CommandFramework.Dispatcher;
 using CommandFramework.Reflection;
 
 namespace CommandFramework.Commands.Method
@@ -83,15 +84,15 @@ namespace CommandFramework.Commands.Method
 
 		private void TraceExecution(object[] parameters)
 		{
-			Trace.WriteLine($"Executing method command: {Method.Name}");
-			Trace.Indent();
+			Tracer.WriteLine($"Executing method command: {Method.Name}");
+			Tracer.Indent();
 			
 			for (var i = 0; i < Parameters.Count; i++)
 			{
-				Trace.WriteLine($"{Parameters.ElementAt(i)}: {parameters[i] ?? "<null>"}");
+				//Trace.WriteLine($"{Parameters.ElementAt(i)}: {parameters[i] ?? "<null>"}");
 			}
 
-			Trace.Unindent();
+			Tracer.Unindent();
 		}
 
 		private void CompileInvocator()

@@ -13,7 +13,7 @@ namespace CommandFramework.Tests.Parsers
 		{
 			var parser = new CommandLineCommandParser();
 			var cmd = parser.Parse("test --hello --test");
-			cmd.Parameters.Select(p => p.Name).ShouldAllBeEquivalentTo(new[] { "hello", "test" });
+			cmd.Parameters.Select(p => p.Name).Should().BeEquivalentTo("hello", "test");
 		}
 
 		[Test]
@@ -21,7 +21,7 @@ namespace CommandFramework.Tests.Parsers
 		{
 			var parser = new CommandLineCommandParser();
 			var cmd = parser.Parse("test --hello-test --test");
-			cmd.Parameters.Select(p => p.Name).ShouldAllBeEquivalentTo(new[] { "hello-test", "test" });
+			cmd.Parameters.Select(p => p.Name).Should().BeEquivalentTo("hello-test", "test");
 		}
 	}
 }

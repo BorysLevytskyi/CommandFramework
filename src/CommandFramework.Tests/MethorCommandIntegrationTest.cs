@@ -55,7 +55,7 @@ namespace CommandFramework.Tests
 			intP.Should().Be(10);
 			stringP.Should().Be("test");
 			dateP.Should().Be(new DateTime(2015, 1, 1));
-			colP.ShouldAllBeEquivalentTo(new[] { 2, 3, 4});
+			colP.Should().BeEquivalentTo(new[] { 2, 3, 4});
 		}
 
 		[Command(Name = "emptycol")]
